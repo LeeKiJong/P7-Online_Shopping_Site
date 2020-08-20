@@ -22,8 +22,8 @@ public class MemberController {
 	@Inject
 	MemberService service;
 	
-	@Autowired
-	BCryptPasswordEncoder passEncoder;
+	/*@Autowired
+	BCryptPasswordEncoder passEncoder;*/
 	
 	// 회원 가입 GET
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
@@ -36,9 +36,12 @@ public class MemberController {
 	public String postSignup(MemberVO vo) throws Exception {
 	 Logger.info("post signup");
 	  
-	 String inputPass = vo.getUserPass();
+	 /*String inputPass = vo.getUserPass();
 	 String pass = passEncoder.encode(inputPass);
-	 vo.setUserPass(pass);
+	 vo.setUserPass(pass);*/
+	 
+	 String inputPass = vo.getUserPass();
+	 vo.setUserPass(inputPass);
 
 	 service.signup(vo);
 

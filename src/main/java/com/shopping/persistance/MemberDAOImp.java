@@ -1,5 +1,7 @@
 package com.shopping.persistance;
 
+
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -10,15 +12,15 @@ import com.shopping.domain.MemberVO;
 @Repository
 public class MemberDAOImp implements MemberDAO{
 	
-	@Inject
-	private SqlSession sql;
+	@Inject 
+	private SqlSession sqlSession; 
 	
 	private static String namespace = "com.shopping.mappers.memberMapper";
 	
 	//회원가입
 	@Override
 	public void signup(MemberVO vo) throws Exception{
-		sql.insert(namespace + ".signup", vo);
+		sqlSession.insert(namespace + ".signup", vo);
 	}
 
 	
