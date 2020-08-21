@@ -22,6 +22,12 @@ public class MemberDAOImp implements MemberDAO{
 	public void signup(MemberVO vo) throws Exception{
 		sqlSession.insert(namespace + ".signup", vo);
 	}
+	
+	//로그인
+	@Override
+	public MemberVO signin(MemberVO vo) throws Exception{
+		return sqlSession.selectOne(namespace + ".signin", vo);
+	}
 
 	
 }
