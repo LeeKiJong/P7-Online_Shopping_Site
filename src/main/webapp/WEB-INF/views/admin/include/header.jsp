@@ -4,5 +4,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <h1 class = "title">
-	LKJ Shopping Mall
+	(Admin)LKJ Online Shopping Mall
 </h1>
