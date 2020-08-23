@@ -31,10 +31,10 @@
 				  </div>
 					       
 				  <button type="submit" id="signin_btn" name="signin_btn">로그인</button>
-					  
-				  <c:if test="${msg == false}">
-					   <p style="color:#f00;">로그인에 실패했습니다.</p>
-				  </c:if>
+				  <c:out value = "${msg}"/>
+				  <!--<c:if test="${msg == false}">
+					   <p style="color:#f00;">비밀번호가 틀렸습니다.</p>
+				  </c:if>-->
 			 </form>   
 		</section>
 	</div>

@@ -45,7 +45,7 @@ public class MemberController {
 	 
 	 service.signup(vo);
 
-	 return "redirect:/";
+	 return "redirect:/member/signin";
 	}
 	
 	// 로그인 GET
@@ -60,7 +60,13 @@ public class MemberController {
 		Logger.info("post signin");
 		
 		MemberVO login = service.signin(vo);
+		
+		if(login==null){
+			rttr.addFlashAttribute("msg", "존재하지 않는 아이디입니다.");
+			return "redirect:/member/signin";
+		}
 		HttpSession session = req.getSession();
+		
 		
 		boolean passMatch = passwordEncoder.matches(vo.getUserPass(), login.getUserPass());
 		
@@ -68,11 +74,11 @@ public class MemberController {
 			session.setAttribute("member", login);
 		} else {
 			session.setAttribute("member", null);
-			rttr.addFlashAttribute("msg", false);
+			rttr.addFlashAttribute("msg", "비밀번호가 틀렸습니다.");
 			return "redirect:/member/signin";
 		}
 		
-		return "redirect:/";
+		return "redirect:/member/signin";
 		
 	}
 	
@@ -83,6 +89,6 @@ public class MemberController {
 		
 		service.signout(session);
 		
-		return "redirect:/";
+		return "redirect:/member/signin";
 	}
 }

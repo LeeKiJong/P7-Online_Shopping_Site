@@ -8,7 +8,7 @@
 		insert into tbl_member(userId, userPass, userName, userPhone)
 			values(#{userId}, #{userPass}, #{userName}, #{userPhone})
 	</insert>
-	
+	<!-- 로그인 -->
 	<select id = "signin" resultType="com.shopping.domain.MemberVO">
 		select
 			userId, userName, userPass, userPhone, userAddr1, userAddr2, userAddr3, regiDate
