@@ -17,4 +17,10 @@ public class AdminController {
 	public void getIndex() throws Exception{
 		Logger.info("get index");
 	}
+	
+	//상품 등록
+	@RequestMapping(value = "/goods/register", method = RequestMethod.GET)
+	public void getGoodsRegister() throws Exception{
+		Logger.info("get goods register");
+	}
 }

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapper namespace="com.shopping.mappers.adminMapper">
+	
+	<!-- 카테고리 호출 -->
+	<select id = "category" resultType="com.shopping.domain.CategoryVO">
+		select 
+			level, cateName, cateCode, cateCodeRef 
+		from goods_category
+			start with cateCodeRef is null connect by prior cateCode = cateCodeRef	
+	</select>
+</mapper>
+
