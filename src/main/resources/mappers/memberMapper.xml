@@ -11,7 +11,7 @@
 	<!-- 로그인 -->
 	<select id = "signin" resultType="com.shopping.domain.MemberVO">
 		select
-			userId, userName, userPass, userPhone, userAddr1, userAddr2, userAddr3, regiDate
+			userId, userName, userPass, userPhone, userAddr1, userAddr2, userAddr3, regiDate, verify
 		from
 			tbl_member
 		where userId = #{userId}		

@@ -27,6 +27,13 @@
 
 	<context:component-scan base-package="com.shopping.controller" />
 	
-	
+	<beans:bean id="AdminInterceptor" class="com.shopping.interceptor.AdminInterceptor" />
+
+	<interceptors>
+		 <interceptor>
+			  <mapping path="/admin/**" />
+			  <beans:ref bean="AdminInterceptor" />
+		 </interceptor>
+	</interceptors>
 	
 </beans:beans>
