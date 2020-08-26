@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.shopping.domain.CategoryVO;
+import com.shopping.domain.GoodsVO;
 
 @Repository
 public class AdminDAOImp implements AdminDAO{
@@ -23,4 +24,11 @@ public class AdminDAOImp implements AdminDAO{
 	public List<CategoryVO> category() throws Exception{
 		return sql.selectList(namespace + ".category");
 	}
+	
+	//상품 등록
+	@Override
+	public void register(GoodsVO vo) throws Exception{
+		sql.insert(namespace + ".register", vo);
+	}
+		
 }
