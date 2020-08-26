@@ -19,6 +19,7 @@
 	<section id ="container">
 	<div id = "container_box">
 		<section id="content">
+			<c:if test = "${member==null}">
 			 <form role="form" method="post" autocomplete="off">
 				  <div class="input_area">
 					   <label for="userId">아이디</label>
@@ -32,10 +33,8 @@
 					       
 				  <button type="submit" id="signin_btn" name="signin_btn">로그인</button>
 				  <c:out value = "${msg}"/>
-				  <!--<c:if test="${msg == false}">
-					   <p style="color:#f00;">비밀번호가 틀렸습니다.</p>
-				  </c:if>-->
-			 </form>   
+			 </form>
+			 </c:if>   
 		</section>
 	</div>
 	</section>

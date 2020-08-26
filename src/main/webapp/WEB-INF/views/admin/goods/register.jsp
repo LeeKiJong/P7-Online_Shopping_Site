@@ -146,12 +146,6 @@
 	 
 	 var cate2Select = $("select.category2");
 
-	 /*
-	 for(var i = 0; i < cate2Arr.length; i++) {
-	   cate2Select.append("<option value='" + cate2Arr[i].cateCode + "'>"
-	        + cate2Arr[i].cateName + "</option>");
-	 }
-	 기존 데이터에 추가하는 코드 */
 	 
 	 cate2Select.children().remove();
 
