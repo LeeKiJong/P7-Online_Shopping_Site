@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 <head>
 	<title>(Admin)LKJ Online Shopping Mall</title>
@@ -67,13 +68,18 @@
 						   <a href = "/shopping/admin/goods/view?n=${list.gdsNum}">${list.gdsName}</a>
 						   </td>
 						   <td>${list.cateCode}</td>
+						  
 						   <td>
 						   		<fmt:formatNumber value ="${list.gdsPrice}" pattern = "###,###,###"/>
 						   </td>
+						  
 						   <td>${list.gdsStock}</td>
-						   <td>
-						   		<fmt:formatNumber value ="${list.gdsDate}" pattern = "yyyy-MM-dd"/>
+						   
+						   
+						  <td>
+						   		<fmt:formatDate value ="${list.gdsDate}" pattern = "yyyy-MM-dd"/>
 				    		</td>
+				    		
 				    	</tr>   
 					</c:forEach>
 				</tbody>
