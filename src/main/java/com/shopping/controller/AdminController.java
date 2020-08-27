@@ -80,6 +80,15 @@ public class AdminController {
 		model.addAttribute("category", JSONArray.fromObject(category));
 			
 	}
+	
+	// 상품 수정
+	@RequestMapping(value = "/goods/modify", method = RequestMethod.POST)
+	public String postGoodsModify(GoodsVO vo) throws Exception {
+
+	 adminService.goodsModify(vo);
+	 
+	 return "redirect:/admin/index";
+	}
 		
 		
 }

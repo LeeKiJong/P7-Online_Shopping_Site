@@ -19,4 +19,8 @@ public interface AdminDAO {
 	
 	//상품조회 + 카테고리 조인
 	public GoodsViewVO goodsView(int gdsNum) throws Exception;
+	
+	//상품 수정
+	public void goodsModify(GoodsVO vo) throws Exception;
+	
 }
