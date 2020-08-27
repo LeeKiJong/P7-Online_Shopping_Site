@@ -1,7 +1,9 @@
 package com.shopping.controller;
 
+import java.io.File;
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.inject.Inject;
 
 import org.slf4j.Logger;
@@ -11,11 +13,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.shopping.domain.CategoryVO;
 import com.shopping.domain.GoodsVO;
 import com.shopping.domain.GoodsViewVO;
 import com.shopping.service.AdminService;
+import com.shopping.utils.UploadFileUtils;
 
 import net.sf.json.JSONArray;
 
@@ -27,6 +31,9 @@ public class AdminController {
 	
 	@Inject
 	AdminService adminService;
+	
+	@Resource(name = "uploadPath")
+	private String uploadPath;
 	//관리자 화면
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public void getIndex() throws Exception{
@@ -45,7 +52,24 @@ public class AdminController {
 	
 	//상품 등록 POST
 	@RequestMapping(value = "/goods/register", method = RequestMethod.POST)
-	public String postGoodsRegister(GoodsVO vo) throws Exception{
+	public String postGoodsRegister(GoodsVO vo, MultipartFile file) throws Exception{
+		
+		String imgUploadPath = uploadPath + File.separator + "imgUpload";
+		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
+		String fileName = null;
+
+		if(file.getOriginalFilename() != null && file.getOriginalFilename() != ""){
+		 //파일을 첨부하지 않으면 에러 발생. if(file!=null)을 그대로 사용하면 안된다.
+			fileName =  UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath); 
+		} else {
+		 fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
+		}
+
+		vo.setGdsImg(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
+		vo.setGdsThumbImg(File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
+		
+		
+		
 		adminService.register(vo);
 			
 		return "redirect:/admin/index";
@@ -87,6 +111,15 @@ public class AdminController {
 
 	 adminService.goodsModify(vo);
 	 
+	 return "redirect:/admin/index";
+	}
+	
+	// 상품 수정
+	@RequestMapping(value = "/goods/delete", method = RequestMethod.POST)
+	public String postGoodsDelete(@RequestParam("n") int gdsNum) throws Exception {
+
+	 adminService.goodsDelete(gdsNum);
+		 
 	 return "redirect:/admin/index";
 	}
 		

@@ -50,5 +50,10 @@ public class AdminDAOImp implements AdminDAO{
 		sql.update(namespace + ".goodsModify" ,vo);
 	}
 	
+	//상품 삭제
+	public void goodsDelete(int gdsNum) throws Exception{
+		sql.delete(namespace + ".goodsDelete", gdsNum);
+	}
+	
 }
 

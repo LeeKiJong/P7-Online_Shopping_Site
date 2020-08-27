@@ -55,6 +55,16 @@
 		         gdsDes = #{gdsDes}
 		     where gdsNum = ${gdsNum}
 	</update>
+	
+	<!-- 상품삭제 -->
+	<delete id="goodsDelete">
+		 delete
+		 	tbl_goods
+		 where gdsNum = #{gdsNum}
+	</delete>
+	
+	
+	
 
 	
 	

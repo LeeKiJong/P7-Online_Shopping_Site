@@ -23,4 +23,7 @@ public interface AdminDAO {
 	//상품 수정
 	public void goodsModify(GoodsVO vo) throws Exception;
 	
+	//상품 삭제
+	public void goodsDelete(int gdsNum) throws Exception;
+	
 }
