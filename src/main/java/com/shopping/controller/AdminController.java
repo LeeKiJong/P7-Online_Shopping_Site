@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.shopping.domain.CategoryVO;
 import com.shopping.domain.GoodsVO;
+import com.shopping.domain.GoodsViewVO;
 import com.shopping.service.AdminService;
 
 import net.sf.json.JSONArray;
@@ -63,9 +64,22 @@ public class AdminController {
 	//상품 조회 GET
 	@RequestMapping(value = "/goods/view", method = RequestMethod.GET)
 	public void getGoodsview(@RequestParam("n") int gdsNum, Model model) throws Exception{
-		GoodsVO goods = adminService.goodsView(gdsNum);
+		GoodsViewVO goods = adminService.goodsView(gdsNum);
 		model.addAttribute("goods", goods);
 		
 	}
+	
+	//상품 조회 GET
+	@RequestMapping(value = "/goods/modify", method = RequestMethod.GET)
+	public void getGoodsModify(@RequestParam("n") int gdsNum, Model model) throws Exception{
+		GoodsViewVO goods = adminService.goodsView(gdsNum);
+		model.addAttribute("goods", goods);
+		
+		List<CategoryVO> category = null;
+		category = adminService.category();
+		model.addAttribute("category", JSONArray.fromObject(category));
+			
+	}
+		
 		
 }

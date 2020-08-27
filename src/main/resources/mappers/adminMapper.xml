@@ -26,12 +26,24 @@
 	        order by gdsNum desc
 	</select>
 	
-	<!-- 상품 조회 -->
+	<!-- 상품 조회 
 	<select id="goodsView" resultType="com.shopping.domain.GoodsVO">
 	 select gdsNum, gdsName, cateCode, gdsPrice, gdsStock, gdsDes, gdsImg, gdsDate
 	     from tbl_goods
 	         where gdsNum = #{gdsNum}
 	</select>
+	-->
+	
+	<!-- 상품 조회 -->
+	<select id="goodsView" resultType="com.shopping.domain.GoodsViewVO">
+	 select
+     g.gdsNum, g.gdsName, g.cateCode, c.cateCodeRef, c.cateName, gdsPrice, gdsStock, gdsDes, gdsImg, gdsDate
+         from tbl_goods g
+             inner join goods_category c
+                 on g.cateCode = c.cateCode          
+            where g.gdsNum = #{gdsNum}
+	</select>
+	
 
 
 </mapper>
