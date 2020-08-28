@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+	
 <html>
 <head>
 	<title>(Admin)LKJ Online Shopping Mall</title>
@@ -51,7 +53,8 @@
 		<aside>
 			<%@ include file = "/WEB-INF/views/admin/include/aside.jsp" %>
 		</aside>
-		<form role="form" method="post" autocomplete="off">
+		<div id = "container_box">
+		<form role="form" method="post" autocomplete="off" enctype = "multipart/form-data">
 
 			<div class="inputArea"> 
 			 	<label>1차 분류</label>
@@ -112,7 +115,7 @@
 			
 		</form>
 		
-		
+		</div>
 		
 	</section>
 	<footer id = "footer">

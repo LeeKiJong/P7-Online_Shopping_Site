@@ -50,6 +50,7 @@
 		<aside>
 			<%@ include file = "/WEB-INF/views/admin/include/aside.jsp" %>
 		</aside>
+		<div id = "container_box">
 		<form role="form" method="post" autocomplete="off">
 
 			<input type="hidden" name="gdsNum" value="${goods.gdsNum}" />
@@ -91,6 +92,7 @@
 			</script>
 			</div>   
 		</form>
+		</div>
 		
 		
 		
