@@ -52,7 +52,9 @@
 		         cateCode = #{cateCode},
 		         gdsPrice = #{gdsPrice},
 		         gdsStock = #{gdsStock},
-		         gdsDes = #{gdsDes}
+		         gdsDes = #{gdsDes},
+		         gdsImg = #{gdsImg},
+		         gdsThumbImg = #{gdsThumbImg}
 		     where gdsNum = ${gdsNum}
 	</update>
 	

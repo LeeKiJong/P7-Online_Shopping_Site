@@ -32,6 +32,8 @@
 		label[for='gdsDes'] { display:block; }
 		input { width:150px; }
 		textarea#gdsDes { width:400px; height:180px; }
+		
+		.select_img img {width:500px; margin:20px 0 ;}
 </style>
 </head>
 <body>
@@ -51,7 +53,8 @@
 			<%@ include file = "/WEB-INF/views/admin/include/aside.jsp" %>
 		</aside>
 		<div id = "container_box">
-		<form role="form" method="post" autocomplete="off">
+		<h2>상품 수정</h2>
+		<form role="form" method="post" autocomplete="off" enctype="multipart/form-data">
 
 			<input type="hidden" name="gdsNum" value="${goods.gdsNum}" />
 			
@@ -81,6 +84,31 @@
 			 <label for="gdsDes">상품소개</label>
 			 <textarea rows="5" cols="50" id="gdsDes" name="gdsDes">${goods.gdsDes}</textarea>
 			</div>
+			
+			<div class="inputArea">
+			 <label for="gdsImg">이미지</label>
+			 <input type="file" id="gdsImg" name="file" />
+			 <div class="select_img">
+			  <img src="${goods.gdsImg}" />
+			  <input type="hidden" name="gdsImg" value="${goods.gdsImg}" />
+			  <input type="hidden" name="gdsThumbImg" value="${goods.gdsThumbImg}" /> 
+			 </div>
+			 
+			 <script>
+			  $("#gdsImg").change(function(){
+			   if(this.files && this.files[0]) {
+			    var reader = new FileReader;
+			    reader.onload = function(data) {
+			     $(".select_img img").attr("src", data.target.result).width(500);        
+			    }
+			    reader.readAsDataURL(this.files[0]);
+			   }
+			  });
+			 </script>
+			 <%=request.getRealPath("/") %>
+			</div>
+
+			
 			<div class="inputArea">
 			 <button type="submit" id="update_Btn" class="btn btn-primary">완료</button>
 			 <button type="submit" id="back_Btn" class="btn btn-warning">취소</button> 
