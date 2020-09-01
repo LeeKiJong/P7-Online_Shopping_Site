@@ -34,8 +34,6 @@
 		label[for='gdsDes'] { display:block; }
 		input { width:150px; }
 		textarea#gdsDes { width:400px; height:180px; }
-		.oriImg{width:500px; height:auto}
-		.thumbImg{}
 </style>
 </head>
 <body>
@@ -90,10 +88,10 @@
 			<div class="inputArea">
 				 <label for="gdsImg">이미지</label>
 				 <p>원본 이미지</p>
-				 <img src="C:\Users\rl876\eclipse-workspace\Shopping_Site\src\main\webapp\resources${goods.gdsImg}" class="oriImg"/>
+				 <img src="${goods.gdsImg}" class="oriImg"/>
 				 
 				 <p>썸네일</p>
-				 <img src="C:\Users\rl876\eclipse-workspace\Shopping_Site\src\main\webapp\resources${goods.gdsThumbImg}" class="thumbImg"/>
+				 <img src="${goods.gdsImg}" class="thumbImg"/>
 			</div>
 			
 			<div class="inputArea">

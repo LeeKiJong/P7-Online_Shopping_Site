@@ -216,7 +216,17 @@
 	
 	
 </script>
+<script>
+var regExp = /[^0-9]/gi;
 
+$("#gdsPrice").keyup(function(){ numCheck($(this)); });
+$("#gdsStock").keyup(function(){ numCheck($(this)); });
+
+function numCheck(selector) {
+ var tempVal = selector.val();
+ selector.val(tempVal.replace(regExp, ""));
+}
+</script>
 </body>
 </html>
 
