@@ -53,7 +53,7 @@
 		<aside>
 			<%@ include file = "/WEB-INF/views/admin/include/aside.jsp" %>
 		</aside>
-		<div id = "container_box">
+		
 		<form role="form" method="post" autocomplete="off" enctype = "multipart/form-data">
 
 			<div class="inputArea"> 
@@ -115,7 +115,7 @@
 			
 		</form>
 		
-		</div>
+		
 		
 	</section>
 	<footer id = "footer">
@@ -177,7 +177,7 @@
 	 $("option:selected", this).each(function(){
 	  
 	  var selectVal = $(this).val();  
-	  cate2Select.append("<option value'" + selectVal + "'>전체</oprion>'");
+	  cate2Select.append("<option value'" + selectVal + "'>전체</option>'");
 	  
 	  for(var i = 0; i < cate2Arr.length; i++) {
 	   if(selectVal == cate2Arr[i].cateCodeRef) {

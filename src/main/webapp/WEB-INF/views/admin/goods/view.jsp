@@ -90,10 +90,10 @@
 			<div class="inputArea">
 				 <label for="gdsImg">이미지</label>
 				 <p>원본 이미지</p>
-				 <img src="${goods.gdsImg}" class="oriImg"/>
+				 <img src="C:\Users\rl876\eclipse-workspace\Shopping_Site\src\main\webapp\resources${goods.gdsImg}" class="oriImg"/>
 				 
 				 <p>썸네일</p>
-				 <img src="${goods.gdsThumbImg}" class="thumbImg"/>
+				 <img src="C:\Users\rl876\eclipse-workspace\Shopping_Site\src\main\webapp\resources${goods.gdsThumbImg}" class="thumbImg"/>
 			</div>
 			
 			<div class="inputArea">

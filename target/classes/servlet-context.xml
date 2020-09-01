@@ -38,7 +38,7 @@
 	
 	<!-- 업로드 패스 설정  --> 
 	<beans:bean class="java.lang.String" id="uploadPath">
-	 <beans:constructor-arg value="C:\Users\rl876\Downloads\apache-tomcat-7.0.99\apache-tomcat-7.0.99\wtpwebapps\Shopping_Site\resources" />
+	 <beans:constructor-arg value="C:\Users\rl876\eclipse-workspace\Shopping_Site\src\main\webapp\resources" />
 	</beans:bean>
 	
 	<!-- 일반 파일 업로드 경로  -->
