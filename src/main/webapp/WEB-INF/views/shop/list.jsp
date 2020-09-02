@@ -61,7 +61,7 @@
 		 section#content div.goodsName { padding:10px 0; text-align:center; }
 		 section#content div.goodsName a { color:#000; }	
 	</style>
-	<title>(Admin)LKJ Online Shopping Mall</title>
+	<title>LKJ Online Shopping Mall</title>
 </head>
 <body>
 <div id = "root">
@@ -85,7 +85,7 @@
 				   <img src="${list.gdsThumbImg}">
 				  </div> 
 				  <div class="goodsName">
-				   <a href="/shop/view?n=${list.gdsNum}">${list.gdsName}</a>
+				   <a href="/shopping/shop/view?n=${list.gdsNum}">${list.gdsName}</a>
 				  </div>
 				 </li>
 				 </c:forEach>
