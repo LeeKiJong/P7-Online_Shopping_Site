@@ -17,6 +17,11 @@
 				<a href = "/shopping/admin/index">관리자 화면</a>
 			</li>
 		</c:if>
+		<c:if test = "${member.verify == 0}">
+			<li>
+				<a href = "/shopping/shop/index">일반 화면</a>
+			</li>
+		</c:if>
 		<li>
 			${member.userName}님 환영합니다.
 		</li>

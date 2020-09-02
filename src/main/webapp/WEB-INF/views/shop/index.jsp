@@ -3,7 +3,7 @@
 <html>
 <head>
 	<style>
-	
+
 		 body { margin:0; padding:0; font-family:'맑은 고딕', verdana; }
 		 a { color:#05f; text-decoration:none; }
 		 a:hover { text-decoration:underline; }
@@ -39,9 +39,6 @@
 		 aside#aside li a { color:#000; display:block; padding:10px 0; }
 		 aside#aside li a:hover { text-decoration:none; background:#eee; }
 		 
-		 footer#footer { margin-top:100px; border-radius:50px 50px 0 0; }
-		 footer#footer div#footer_box { padding:0 20px; }
-		 
 		 aside#aside li { position:relative; }
 		aside#aside li:hover { background:#eee; }   
 		aside#aside li > ul.low { display:none; position:absolute; top:0; left:180px;  }
@@ -50,7 +47,10 @@
 		aside#aside li:hover > ul.low li a:hover { background:#fff;}
 		aside#aside li > ul.low li { width:180px; }
 
-	 
+		 
+		 footer#footer { margin-top:100px; border-radius:50px 50px 0 0; }
+		 footer#footer div#footer_box { padding:0 20px; }
+		 
 	</style>
 	<title>(Admin)LKJ Online Shopping Mall</title>
 </head>

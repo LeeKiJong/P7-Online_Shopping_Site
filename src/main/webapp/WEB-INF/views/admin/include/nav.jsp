@@ -12,4 +12,5 @@
 			<a href = "/shopping/member/signout">로그아웃</a>
 		</li>
 	</c:if>
+	
 </ul>
