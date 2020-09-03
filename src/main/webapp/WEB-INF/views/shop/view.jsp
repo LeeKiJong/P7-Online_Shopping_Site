@@ -2,10 +2,10 @@
 	pageEncoding="UTF-8"%>
 	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<script src="/resources/jquery/jquery-3.3.1.min.js"></script>
+
 <html>
 <head>
-
+	
 	<title>LKJ Shopping Mall</title>
 	<style>
 	
@@ -168,7 +168,7 @@
 				<div id="reply">
 
 				 <c:if test="${member == null }">
-				  <p>소감을 남기시려면 <a href="/member/signin">로그인</a>해주세요</p>
+				  <p>소감을 남기시려면 <a href="/shopping/member/signin">로그인</a>해주세요</p>
 				 </c:if>
 				 
 				 <c:if test="${member != null}">
@@ -189,6 +189,7 @@
 				 
 				 <section class="replyList">
 				 	<ol>
+				 	<%-- 
 					 <c:forEach items="${reply}" var="reply">
 					
 					  <li>
@@ -199,7 +200,32 @@
 					      <div class="replyContent">${reply.repCon}</div>
 					    </li>
 					   </c:forEach>
+					   --%>
 				  </ol>    
+				  <script> 
+				 var gdsNum = ${view.gdsNum};
+				 $.getJSON("/shopping/shop/view/replyList" + "?n=" + gdsNum, function(data){
+				  var str = "";
+				  
+				  $(data).each(function(){
+				   
+				   console.log(data);
+				   
+				   var repDate = new Date(this.repDate);
+				   repDate = repDate.toLocaleDateString("ko-US")
+				   
+				   str += "<li data-gdsNum='" + this.gdsNum + "'>"
+				     + "<div class='userInfo'>"
+				     + "<span class='userName'>" + this.userName + "</span>"
+				     + "<span class='date'>" + repDate + "</span>"
+				     + "</div>"
+				     + "<div class='replyContent'>" + this.repCon + "</div>"
+				     + "</li>";           
+				  });
+				  
+				  $("section.replyList ol").html(str);
+				 });
+				</script>
 				</section>
 				</div>
 				

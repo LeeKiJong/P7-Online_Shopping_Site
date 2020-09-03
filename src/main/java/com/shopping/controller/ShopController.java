@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.shopping.domain.GoodsViewVO;
 import com.shopping.domain.MemberVO;
@@ -55,8 +56,10 @@ public class ShopController {
 		 GoodsViewVO view = service.goodsView(gdsNum);
 		 model.addAttribute("view", view);
 		 
+		 /*
 		 List<ReplyListVO> reply = service.replyList(gdsNum);
 		 model.addAttribute("reply", reply);
+		 */
 	 }
 		
 	 
@@ -72,5 +75,17 @@ public class ShopController {
 	  
 	  return "redirect:/shop/view?n=" + reply.getGdsNum();
 	 }
+	 
+	 // 상품 소감(댓글) 목록
+	 @ResponseBody
+	 @RequestMapping(value = "/view/replyList", method = RequestMethod.GET)
+	 public List<ReplyListVO> getReplyList(@RequestParam("n") int gdsNum) throws Exception {
+	  logger.info("get reply list");
+	    
+	  List<ReplyListVO> reply = service.replyList(gdsNum);
+	  
+	  return reply;
+	 } 
+	 
 		
 }
