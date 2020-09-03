@@ -44,6 +44,18 @@
 	         on r.userId = m.userId
 	     where gdsNum = #{gdsNum}
 	</select>
+	<!-- 상품 소감(댓글) 삭제 -->
+	<delete id="deleteReply">
+	 delete tbl_reply
+	     where repNum = #{repNum}
+	         and userId = #{userId}
+	</delete>
 	
+	<!-- 아이디 체크 -->
+	<select id="replyUserIdCheck" resultType="String">
+	 select userId
+	  from tbl_reply
+	      where repNum = #{repNum}
+	</select>
 	
 </mapper>

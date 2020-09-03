@@ -85,6 +85,8 @@
 	 section.replyList div.userInfo .userName { font-size:24px; font-weight:bold; }
 	 section.replyList div.userInfo .date { color:#999; display:inline-block; margin-left:10px; }
 	 section.replyList div.replyContent { padding:10px; margin:20px 0; }
+	
+	 section.replyList div.replyFooter button { font-size:14px; border: 1px solid #999; background:none; margin-right:10px; }
 	</style>
 
 	<script> 
@@ -106,6 +108,11 @@
 					     + "<span class='date'>" + repDate + "</span>"
 					     + "</div>"
 					     + "<div class='replyContent'>" + this.repCon + "</div>"
+					 
+					     + "<div class='replyFooter'>"
+					     + "<button type='button' class='modify' data-repNum='" + this.repNum + "'>수정</button>"
+					     + "<button type='button' class='delete' data-repNum='" + this.repNum + "'>삭제</button>"
+					     + "</div>"
 					     + "</li>";           
 					  });
 					  
@@ -208,6 +215,7 @@
 				    <button type="button" id="reply_btn">소감 남기기</button>
 				    
 				    <script>
+				    function replyRegist(){
 					 $("#reply_btn").click(function(){
 					  
 					  var formObj = $(".replyForm form[role='form']");
@@ -229,6 +237,7 @@
 					   }
 					  });
 					 });
+				    }
 					</script>
 
 				   </div>
@@ -254,6 +263,35 @@
 				  </ol>    
 				  <script>
 				  	replyList();
+				  </script>
+				  
+				  <script>
+				  	$(document).on("click", ".delete", function(){
+				  		
+				  		var deleteConfirm = confirm("정말로 삭제하시겠습니까?");
+				  		
+				  		if(deleteConfirm){
+					  
+						  var data = {repNum : $(this).attr("data-repNum")};
+						   
+						  $.ajax({
+							  url : "/shopping/shop/view/deleteReply",
+							  type : "post",
+							  data : data,
+							  success : function(result){
+							   
+							   if(result == 1) {
+							    replyList();
+							   } else {
+							    alert("작성자 본인만 할 수 있습니다.");    
+							   }
+							  },
+								  error : function(){
+								   alert("로그인하셔야합니다.")
+								  }
+							 });
+				  		}
+					 });
 				  </script>
 				</section>
 				</div>

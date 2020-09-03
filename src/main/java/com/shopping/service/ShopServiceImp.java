@@ -53,4 +53,16 @@ public class ShopServiceImp implements ShopService{
 	public List<ReplyListVO> replyList(int gdsNum) throws Exception{
 		return dao.replyList(gdsNum);
 	}
+	
+	//상품 소감(댓글) 삭제
+	@Override
+	public void deleteReply(ReplyVO reply) throws Exception{
+		dao.deleteReply(reply);
+	}
+			
+	@Override
+	//아이디 체크
+	public String idCheck(int repNum) throws Exception{
+		return dao.idCheck(repNum);
+	}
 }
