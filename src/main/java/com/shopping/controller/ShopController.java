@@ -62,7 +62,7 @@ public class ShopController {
 		 */
 	 }
 		
-	 
+	 /*
 	 // 상품 조회 - 소감(댓글) 작성
 	 @RequestMapping(value = "/view", method = RequestMethod.POST)
 	 public String registReply(ReplyVO reply, HttpSession session) throws Exception {
@@ -75,6 +75,7 @@ public class ShopController {
 	  
 	  return "redirect:/shop/view?n=" + reply.getGdsNum();
 	 }
+	 */
 	 
 	 // 상품 소감(댓글) 목록
 	 @ResponseBody
@@ -85,6 +86,18 @@ public class ShopController {
 	  List<ReplyListVO> reply = service.replyList(gdsNum);
 	  
 	  return reply;
+	 } 
+	 
+	// 상품 소감(댓글) 작성
+	 @ResponseBody
+	 @RequestMapping(value = "/view/registReply", method = RequestMethod.POST)
+	 public void registReply(ReplyVO reply,  HttpSession session) throws Exception {
+	  logger.info("regist reply");
+	  
+	  MemberVO member = (MemberVO)session.getAttribute("member");
+	  reply.setUserId(member.getUserId());
+	  
+	  service.registReply(reply);
 	 } 
 	 
 		

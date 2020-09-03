@@ -87,7 +87,32 @@
 	 section.replyList div.replyContent { padding:10px; margin:20px 0; }
 	</style>
 
-	<title>LKJ Online Shopping Mall</title>
+	<script> 
+				  function replyList(){
+					 var gdsNum = ${view.gdsNum};
+					 $.getJSON("/shopping/shop/view/replyList" + "?n=" + gdsNum, function(data){
+					  var str = "";
+					  
+					  $(data).each(function(){
+					   
+					   console.log(data);
+					   
+					   var repDate = new Date(this.repDate);
+					   repDate = repDate.toLocaleDateString("ko-US")
+					   
+					   str += "<li data-gdsNum='" + this.gdsNum + "'>"
+					     + "<div class='userInfo'>"
+					     + "<span class='userName'>" + this.userName + "</span>"
+					     + "<span class='date'>" + repDate + "</span>"
+					     + "</div>"
+					     + "<div class='replyContent'>" + this.repCon + "</div>"
+					     + "</li>";           
+					  });
+					  
+					  $("section.replyList ol").html(str);
+					 });
+				  }
+				</script>
 </head>
 <body>
 <div id = "root">
@@ -174,13 +199,38 @@
 				 <c:if test="${member != null}">
 				 <section class="replyForm">
 				  <form role="form" method="post" autocomplete="off">
-				  <input type="hidden" name="gdsNum" value="${view.gdsNum}">
+				  <input type="hidden" name="gdsNum" id = "gdsNum" value="${view.gdsNum}">
 				   <div class="input_area">
 				    <textarea name="repCon" id="repCon"></textarea>
 				   </div>
 				   
 				   <div class="input_area">
-				    <button type="submit" id="reply_btn">소감 남기기</button>
+				    <button type="button" id="reply_btn">소감 남기기</button>
+				    
+				    <script>
+					 $("#reply_btn").click(function(){
+					  
+					  var formObj = $(".replyForm form[role='form']");
+					  var gdsNum = $("#gdsNum").val();
+					  var repCon = $("#repCon").val()
+					  
+					  var data = {
+					    gdsNum : gdsNum,
+					    repCon : repCon
+					    };
+					  
+					  $.ajax({
+					   url : "/shopping/shop/view/registReply",
+					   type : "post",
+					   data : data,
+					   success : function(){
+					    replyList();
+					    $("#repCon").val("");
+					   }
+					  });
+					 });
+					</script>
+
 				   </div>
 				   
 				  </form>
@@ -202,30 +252,9 @@
 					   </c:forEach>
 					   --%>
 				  </ol>    
-				  <script> 
-				 var gdsNum = ${view.gdsNum};
-				 $.getJSON("/shopping/shop/view/replyList" + "?n=" + gdsNum, function(data){
-				  var str = "";
-				  
-				  $(data).each(function(){
-				   
-				   console.log(data);
-				   
-				   var repDate = new Date(this.repDate);
-				   repDate = repDate.toLocaleDateString("ko-US")
-				   
-				   str += "<li data-gdsNum='" + this.gdsNum + "'>"
-				     + "<div class='userInfo'>"
-				     + "<span class='userName'>" + this.userName + "</span>"
-				     + "<span class='date'>" + repDate + "</span>"
-				     + "</div>"
-				     + "<div class='replyContent'>" + this.repCon + "</div>"
-				     + "</li>";           
-				  });
-				  
-				  $("section.replyList ol").html(str);
-				 });
-				</script>
+				  <script>
+				  	replyList();
+				  </script>
 				</section>
 				</div>
 				
