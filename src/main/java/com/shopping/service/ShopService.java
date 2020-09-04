@@ -2,6 +2,8 @@ package com.shopping.service;
 
 import java.util.List;
 
+import com.shopping.domain.CartListVO;
+import com.shopping.domain.CartVO;
 import com.shopping.domain.GoodsViewVO;
 import com.shopping.domain.ReplyListVO;
 import com.shopping.domain.ReplyVO;
@@ -28,4 +30,10 @@ public interface ShopService {
 	
 	//상품 소감(댓글) 수정
 	public void modifyReply(ReplyVO reply) throws Exception;
+	
+	//카트 담기
+	public void addCart(CartListVO cart) throws Exception;
+	
+	//카트 리스트
+	public List<CartListVO> cartList(String userId) throws Exception;
 }

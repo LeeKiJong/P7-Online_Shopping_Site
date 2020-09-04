@@ -27,6 +27,10 @@
 		</li>
 		
 		<li>
+			<a href = "/shopping/shop/cartList">장바구니</a>
+		</li>
+		
+		<li>
 			<a href = "/shopping/member/signout">로그아웃</a>
 		</li>
 	</c:if>

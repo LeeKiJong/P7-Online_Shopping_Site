@@ -66,6 +66,22 @@
 	     where repNum = #{repNum}
 	         and userId = #{userId}
 	</update>
-
 	
+	<!-- 카트 담기 -->
+	<insert id="addCart">
+	 insert into tbl_cart (cartNum, userId, gdsNum, cartStock)
+	     values (tbl_cart_seq.nextval, #{userId}, #{gdsNum}, #{cartStock})
+	</insert>
+
+	<!-- 카트 리스트 -->
+	<select id="cartList" resultType="com.shopping.domain.CartListVO">
+	 select
+	     row_number() over(order by c.cartNum desc) as num,
+	     c.cartNum, c.userId, c.gdsNum, c.cartStock, c.addDate,
+	     g.gdsName, g.gdsPrice, g.gdsThumbImg
+	 from tbl_cart c
+	     inner join tbl_goods g
+	         on c.gdsNum = g.gdsNum   
+	     where c.userId = #{userId}
+	</select>
 </mapper>

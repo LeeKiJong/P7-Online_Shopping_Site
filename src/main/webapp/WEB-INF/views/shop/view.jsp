@@ -201,8 +201,40 @@
 					</p>
 				  
 				  <p class="addToCart">
-				   <button type="button">카트에 담기</button>
-				  </p>
+					 <button type="button" class="addCart_btn">카트에 담기</button>
+					 
+					 <script>
+						 $(".addCart_btn").click(function(){
+						  var gdsNum = $("#gdsNum").val();
+						  var cartStock = $(".numBox").val();
+						           
+						  var data = {
+						    gdsNum : gdsNum,
+						    cartStock : cartStock
+						    };
+						  
+						  $.ajax({
+						   url : "/shopping/shop/view/addCart",
+						   type : "post",
+						   data : data,
+						   success : function(result){
+						    
+						    if(result == 1) {
+						     alert("카트 담기 성공");
+						     $(".numBox").val("1");
+						    } else {
+						     alert("회원만 사용할 수 있습니다.")
+						     $(".numBox").val("1");
+						    }
+						   },
+						   error : function(){
+						    alert("카트 담기 실패");
+						   }
+						  });
+						 });
+					</script>
+
+					</p>
 				 </div>
 				 
 				 <div class="gdsDes">${view.gdsDes}</div>
