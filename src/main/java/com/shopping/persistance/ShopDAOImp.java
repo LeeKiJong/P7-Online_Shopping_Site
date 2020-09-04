@@ -70,6 +70,12 @@ public class ShopDAOImp implements ShopDAO{
 		return sql.selectOne(namespace + ".replyUserIdCheck", repNum);
 	}
 	
+	//상품 소감(댓글) 수정
+	@Override
+	public void modifyReply(ReplyVO reply) throws Exception{
+		sql.update(namespace + ".modifyReply", reply);
+	}
+	
 	
 	
 	
