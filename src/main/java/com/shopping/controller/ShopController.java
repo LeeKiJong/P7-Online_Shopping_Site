@@ -150,7 +150,7 @@ public class ShopController {
 	 @ResponseBody
 	 @RequestMapping(value = "/view/addCart", method = RequestMethod.POST)
 	 public int addCart(CartListVO cart, HttpSession session) throws Exception {
-	  
+	  logger.info("add cart");
 	  int result = 0;
 	  
 	  MemberVO member = (MemberVO)session.getAttribute("member");
@@ -178,4 +178,35 @@ public class ShopController {
 	  model.addAttribute("cartList", cartList);
 	  
 	 }
+	 
+	 // 카트 삭제
+	 @ResponseBody
+	 @RequestMapping(value = "/deleteCart", method = RequestMethod.POST)
+	 public int deleteCart(HttpSession session,
+	      @RequestParam(value = "chbox[]") List<String> chArr, CartVO cart) throws Exception {
+	  logger.info("delete cart");
+	  
+	  MemberVO member = (MemberVO)session.getAttribute("member");
+	  String userId = member.getUserId();
+	  
+	  int result = 0;
+	  int cartNum = 0;
+	  
+	  
+	  if(member != null) {
+	   cart.setUserId(userId);
+	   
+	   for(String i : chArr) {   
+		
+	    cartNum = Integer.parseInt(i);
+	    
+	    cart.setCartNum(cartNum);
+	    
+	    service.deleteCart(cart);
+	   }   
+	   result = 1;
+	  }  
+	  return result;  
+	 }
+	 
 }

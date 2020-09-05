@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 <head>
-	<title>LKJ Shopping Mall</title>
+	
 	<style>
 	
 		 body { margin:0; padding:0; font-family:'맑은 고딕', verdana; }
@@ -71,55 +71,146 @@
 		 section#content div.gdsInfo span { display:inline-block; width:100px; font-weight:bold; margin-right:10px; }
 		 section#content div.gdsInfo .delete { text-align:right; }
 		 section#content div.gdsInfo .delete button { font-size:22px; padding:5px 10px; border:1px solid #eee; background:#eee;}
- 
+ 		
+ 		.allCheck { float:left; width:200px; }
+		.allCheck input { width:16px; height:16px; }
+		.allCheck label { margin-left:10px; }
+		.delBtn { float:right; width:300px; text-align:right; }
+		.delBtn button { font-size:18px; padding:5px 10px; border:1px solid #eee; background:#eee;}
+		
+		.checkBox { float:left; width:30px; }
+		.checkBox input { width:16px; height:16px; }
 	</style>
-	<title>LKJ Online Shopping Mall</title>
+	
 </head>
 <body>
 <div id = "root">
 	<header id = "header">
 		<div id = "header_box">
-			<%@ include file = "/WEB-INF/views/admin/include/header.jsp" %>
+			<%@ include file = "/WEB-INF/views/include/header.jsp" %>
 		</div>
 	</header>
 	<nav id = "nav">
 		<div id = "nav_box">
-			<%@ include file = "/WEB-INF/views/admin/include/nav.jsp" %>
+			<%@ include file = "/WEB-INF/views/include/nav.jsp" %>
 		</div>
 	</nav>
 	<section id ="container">
 		<div id = "container_box">
 			<section id="content">
 			 <ul>
-			  <c:forEach items="${cartList}" var="cartList">
-			  <li>
-			   <div class="thumb">
-			    <img src="${cartList.gdsThumbImg}" />
-			   </div>
-			   <div class="gdsInfo">
-			    <p>
-			     <span>상품명</span>${cartList.gdsName}<br />
-			     <span>개당 가격</span><fmt:formatNumber pattern="###,###,###" value="${cartList.gdsPrice}" /> 원<br />
-			     <span>구입 수량</span>${cartList.cartStock} 개<br />
-			     <span>최종 가격</span><fmt:formatNumber pattern="###,###,###" value="${cartList.gdsPrice * cartList.cartStock}" /> 원
-			    </p>
-			    
-			    <div class="delete">
-			     <button type="button" class="delete_btn">삭제</button>
-			    </div>
-			   </div>   
-			  </li>
-			  </c:forEach>
-			 </ul>
+				 <li>
+				  <div class="allCheck">
+				   <input type="checkbox" name="allCheck" id="allCheck" /><label for="allCheck">모두 선택</label> 
+				  	<script>
+					$("#allCheck").click(function(){
+					 var chk = $("#allCheck").prop("checked");
+					 if(chk) {
+					  $(".chBox").prop("checked", true);
+					 } else {
+					  $(".chBox").prop("checked", false);
+					 }
+					});
+					</script>
+				  
+				  </div>
+				  
+				  <div class="delBtn">
+				   <button type="button" class="selectDelete_btn">선택 삭제</button> 
+				  <script>
+				 	$(".selectDelete_btn").click(function(){
+				  var confirm_val = confirm("정말 삭제하시겠습니까?");
+				  
+				  if(confirm_val) {
+				   var checkArr = new Array();
+				   
+				   $("input[class='chBox']:checked").each(function(){
+					   checkArr.push($(this).attr("data-cartNum"));
+				   });
+				              
+				   $.ajax({
+				    url : "/shopping/shop/deleteCart",
+				    type : "post",
+				    data : { chbox : checkArr },
+				    success : function(result){
+				     if(result == 1) {            
+				      location.href = "/shopping/shop/cartList";
+				     } else {
+				      alert("삭제 실패");
+				     }
+				    }
+				   });
+				  } 
+				 });
+				</script>
+				  </div>
+				  
+				 </li>
+				
+				 <c:forEach items="${cartList}" var="cartList">
+				 <li>
+				  <div class="checkBox">
+				   <input type="checkbox" name="chBox" class="chBox" data-cartNum="${cartList.cartNum}" />
+				  
+				  	<script>
+					 $(".chBox").click(function(){
+					  $("#allCheck").prop("checked", false);
+					 });
+					</script>
+				  </div>
+				 
+				  <div class="thumb">
+				   <img src="${cartList.gdsThumbImg}" />
+				  </div>
+				  <div class="gdsInfo">
+				   <p>
+				    <span>상품명</span>${cartList.gdsName}<br />
+				    <span>개당 가격</span><fmt:formatNumber pattern="###,###,###" value="${cartList.gdsPrice}" /> 원<br />
+				    <span>구입 수량</span>${cartList.cartStock} 개<br />
+				    <span>최종 가격</span><fmt:formatNumber pattern="###,###,###" value="${cartList.gdsPrice * cartList.cartStock}" /> 원
+				   </p>
+				   
+				   <div class="delete">
+					 <button type="button" class="delete_${cartList.cartNum}_btn" data-cartNum="${cartList.cartNum}">삭제</button>
+					 
+					 <script>
+					  $(".delete_${cartList.cartNum}_btn").click(function(){
+					   var confirm_val = confirm("정말 삭제하시겠습니까?");
+					   
+					   if(confirm_val) {
+					    var checkArr = new Array();
+					    
+					    checkArr.push($(this).attr("data-cartNum"));
+					               
+					    $.ajax({
+					     url : "/shopping/shop/deleteCart",
+					     type : "post",
+					     data : { chbox : checkArr },
+					     success : function(result){
+					      if(result == 1) {     
+					       location.href = "/shopping/shop/cartList";
+					      } else {
+					       alert("삭제 실패");
+					      }
+					     }
+					    });
+					   } 
+					  });
+					 </script>
+					</div>
+				  </div>   
+				 </li>
+				 </c:forEach>
+				</ul>
 			</section>
 			<aside>
-			<%@ include file = "/WEB-INF/views/admin/include/aside.jsp" %>
+			<%@ include file = "/WEB-INF/views/include/aside.jsp" %>
 			</aside>
 		</div>
 	</section>
 	<footer id = "footer">
 		<div id = "footer-box">
-			<%@ include file = "/WEB-INF/views/admin/include/footer.jsp" %>
+			<%@ include file = "/WEB-INF/views/include/footer.jsp" %>
 		</div>
 	</footer>
 	
