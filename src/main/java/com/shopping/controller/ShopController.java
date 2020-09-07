@@ -21,6 +21,7 @@ import com.shopping.domain.CartVO;
 import com.shopping.domain.GoodsViewVO;
 import com.shopping.domain.MemberVO;
 import com.shopping.domain.OrderDetailVO;
+import com.shopping.domain.OrderListVO;
 import com.shopping.domain.OrderVO;
 import com.shopping.domain.ReplyListVO;
 import com.shopping.domain.ReplyVO;
@@ -260,6 +261,25 @@ public class ShopController {
 	  
 	  model.addAttribute("orderList", orderList);
 	 }
+	 
+	 // 주문 상세 목록
+	 @RequestMapping(value = "/orderView", method = RequestMethod.GET)
+	 public void getOrderList(HttpSession session,
+	       @RequestParam("n") String orderId,
+	       OrderVO order, Model model) throws Exception {
+	  logger.info("get order view");
+	  
+	  MemberVO member = (MemberVO)session.getAttribute("member");
+	  String userId = member.getUserId();
+	  
+	  order.setUserId(userId);
+	  order.setOrderId(orderId);
+	  
+	  List<OrderListVO> orderView = service.orderView(order);
+	  
+	  model.addAttribute("orderView", orderView);
+	 }
+	 
 	 
 	 
 	 
