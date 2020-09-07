@@ -1,5 +1,7 @@
 package com.shopping.controller;
 
+import java.text.DecimalFormat;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -18,6 +20,8 @@ import com.shopping.domain.CartListVO;
 import com.shopping.domain.CartVO;
 import com.shopping.domain.GoodsViewVO;
 import com.shopping.domain.MemberVO;
+import com.shopping.domain.OrderDetailVO;
+import com.shopping.domain.OrderVO;
 import com.shopping.domain.ReplyListVO;
 import com.shopping.domain.ReplyVO;
 import com.shopping.service.ShopService;
@@ -208,5 +212,55 @@ public class ShopController {
 	  }  
 	  return result;  
 	 }
+	 
+	 // 주문
+	 @RequestMapping(value = "/cartList", method = RequestMethod.POST)
+	 public String order(HttpSession session, OrderVO order, OrderDetailVO orderDetail) throws Exception {
+	  logger.info("order");
+	  
+	  MemberVO member = (MemberVO)session.getAttribute("member");  
+	  String userId = member.getUserId();
+	  
+	  Calendar cal = Calendar.getInstance();
+	  int year = cal.get(Calendar.YEAR);
+	  String ym = year + new DecimalFormat("00").format(cal.get(Calendar.MONTH) + 1);
+	  String ymd = ym +  new DecimalFormat("00").format(cal.get(Calendar.DATE));
+	  String subNum = "";
+	  
+	  for(int i = 1; i <= 6; i ++) {
+	   subNum += (int)(Math.random() * 10);
+	  }
+	  
+	  String orderId = ymd + "_" + subNum;
+	  
+	  order.setOrderId(orderId);
+	  order.setUserId(userId);
+	   
+	  service.orderInfo(order);
+	  
+	  orderDetail.setOrderId(orderId);   
+	  service.orderInfo_Details(orderDetail);
+	  
+	  service.cartAllDelete(userId);
+	  
+	  return "redirect:/shop/orderList";  
+	 }
+	 
+	 // 주문 목록
+	 @RequestMapping(value = "/orderList", method = RequestMethod.GET)
+	 public void getOrderList(HttpSession session, OrderVO order, Model model) throws Exception {
+	  logger.info("get order list");
+	  
+	  MemberVO member = (MemberVO)session.getAttribute("member");
+	  String userId = member.getUserId();
+	  
+	  order.setUserId(userId);
+	  
+	  List<OrderVO> orderList = service.orderList(order);
+	  
+	  model.addAttribute("orderList", orderList);
+	 }
+	 
+	 
 	 
 }
