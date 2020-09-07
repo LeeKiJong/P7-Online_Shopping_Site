@@ -80,6 +80,14 @@
 		
 		.checkBox { float:left; width:30px; }
 		.checkBox input { width:16px; height:16px; }
+		
+		.listResult { padding:20px; background:#eee; }
+		.listResult .sum { float:left; width:45%; font-size:22px; }
+		
+		.listResult .orderOpne { float:right; width:45%; text-align:right; }
+		.listResult .orderOpne button { font-size:18px; padding:5px 10px; border:1px solid #999; background:#fff;}
+		.listResult::after { content:""; display:block; clear:both; }
+
 	</style>
 	
 </head>
@@ -147,6 +155,8 @@
 				  
 				 </li>
 				
+				<c:set var="sum" value="0" />
+				
 				 <c:forEach items="${cartList}" var="cartList">
 				 <li>
 				  <div class="checkBox">
@@ -200,8 +210,20 @@
 					</div>
 				  </div>   
 				 </li>
+				 
+				 <c:set var = "sum" value = "${sum + (cartList.gdsPrice * cartList.cartStock)}" />
 				 </c:forEach>
 				</ul>
+				
+			<div class="listResult">
+			 <div class="sum">
+			  총 합계 : <fmt:formatNumber pattern="###,###,###" value="${sum}" />원
+			 </div>
+			 <div class="orderOpne">
+			  <button type="button" class="orderOpne_bnt">주문 정보 입력</button>
+			 </div>
+			</div>
+
 			</section>
 			<aside>
 			<%@ include file = "/WEB-INF/views/include/aside.jsp" %>
