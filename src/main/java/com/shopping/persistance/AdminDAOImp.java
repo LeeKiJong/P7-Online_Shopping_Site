@@ -70,6 +70,10 @@ public class AdminDAOImp implements AdminDAO{
 		return sql.selectList(namespace + ".orderView", order);
 	}
 		
-	
+	//배송 상태
+	@Override
+	public void delivery(OrderVO order) throws Exception{
+		sql.update(namespace + ".delivery", order);
+	}
 }
 

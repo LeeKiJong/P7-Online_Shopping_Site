@@ -68,5 +68,11 @@ public class AdminServiceImp implements AdminService{
 	public List<OrderListVO> orderView(OrderVO order) throws Exception{
 		return dao.orderView(order);
 	}
+	
+	//배송 상태
+	@Override
+	public void delivery(OrderVO order) throws Exception{
+		dao.delivery(order);
+	}
 }
 

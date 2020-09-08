@@ -79,11 +79,34 @@
 			   <p><span>가격</span><fmt:formatNumber pattern="###,###,###" value="${orderView.amount}" /> 원</p>
 			   <p><span>상태</span>${orderList.delivery}</p>
 			   
-			   <div class="deliveryChange">
-				   <button type="button" class="delivery1_btn">배송 중</button>
-				   <button type="button" class="delivery2_btn">배송 완료</button>
-				 </div>
- 
+			  <div class="deliveryChange">
+			 <form role="form" method="post" class="deliveryForm">
+			 
+			  <input type="hidden" name="orderId" value="${orderView.orderId}" />
+			  <input type="hidden" name="delivery" class="delivery" value="" />
+			  
+			  <button type="button" class="delivery1_btn">배송 중</button>
+			  <button type="button" class="delivery2_btn">배송 완료</button>
+			  
+			  <script>
+			   $(".delivery1_btn").click(function(){
+			    $(".delivery").val("배송 중");
+			    run();
+			   });
+			   
+			   $(".delivery2_btn").click(function(){
+			    $(".delivery").val("배송 완료");
+			    run();
+			    
+			   });
+			   
+			   function run(){
+			    $(".deliveryForm").submit();
+			   }
+			  
+			  </script>
+			 </form>
+			</div>
 			  </c:if>
 			  
 			 </c:forEach>

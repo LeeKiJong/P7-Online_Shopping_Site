@@ -175,5 +175,15 @@ public class AdminController {
 	 model.addAttribute("orderView", orderView);
 	}
 	
+	// 주문 상세 목록 - 상태 변경
+	@RequestMapping(value = "/shop/orderView", method = RequestMethod.POST)
+	public String delivery(OrderVO order) throws Exception {
+	 Logger.info("post order view");
+	   
+	 adminService.delivery(order);
+
+	 return "redirect:/admin/shop/orderView?n=" + order.getOrderId();
+	}
+	
 		
 }
