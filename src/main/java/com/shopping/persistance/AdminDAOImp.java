@@ -12,6 +12,7 @@ import com.shopping.domain.GoodsVO;
 import com.shopping.domain.GoodsViewVO;
 import com.shopping.domain.OrderListVO;
 import com.shopping.domain.OrderVO;
+import com.shopping.domain.ReplyListVO;
 
 @Repository
 public class AdminDAOImp implements AdminDAO{
@@ -80,6 +81,18 @@ public class AdminDAOImp implements AdminDAO{
 	@Override
 	public void changeStock(GoodsVO goods) throws Exception{
 		sql.update(namespace + ".changeStock", goods); 
+	}
+	
+	//주문 소감(댓글)
+	@Override
+	public List<ReplyListVO> allReply() throws Exception{
+		return sql.selectList(namespace + ".allReply");
+	}
+	
+	//소감(댓글) 삭제
+	@Override
+	public void deleteReply(int repNum) throws Exception{
+		sql.delete(namespace + ".deleteReply", repNum);
 	}
 }
 

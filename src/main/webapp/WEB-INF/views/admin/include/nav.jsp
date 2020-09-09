@@ -4,9 +4,11 @@
 
 <ul>
 	<c:if test = "${member!=null}">
+		<c:if test = "${member.verify == 0}">
 		<li>
 			<a href = "/shopping/member/index">일반 화면</a>
 		</li>
+		</c:if>
 		
 		<li>
 			<a href = "/shopping/member/signout">로그아웃</a>

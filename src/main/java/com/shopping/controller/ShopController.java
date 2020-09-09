@@ -95,7 +95,7 @@ public class ShopController {
 	  return reply;
 	 } 
 	 
-	// 상품 소감(댓글) 작성
+	 // 상품 소감(댓글) 작성
 	 @ResponseBody
 	 @RequestMapping(value = "/view/registReply", method = RequestMethod.POST)
 	 public void registReply(ReplyVO reply,  HttpSession session) throws Exception {

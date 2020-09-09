@@ -11,6 +11,7 @@ import com.shopping.domain.GoodsVO;
 import com.shopping.domain.GoodsViewVO;
 import com.shopping.domain.OrderListVO;
 import com.shopping.domain.OrderVO;
+import com.shopping.domain.ReplyListVO;
 import com.shopping.persistance.AdminDAO;
 
 @Service
@@ -80,6 +81,19 @@ public class AdminServiceImp implements AdminService{
 	public void changeStock(GoodsVO goods) throws Exception{
 		dao.changeStock(goods);
 	}
+	
+	//주문 소감(댓글)
+	@Override
+	public List<ReplyListVO> allReply() throws Exception{
+		return dao.allReply();
+	}
+	
+	//소감(댓글) 삭제
+	@Override
+	public void deleteReply(int repNum) throws Exception{
+		dao.deleteReply(repNum);
+	}
+		
 }
 
 

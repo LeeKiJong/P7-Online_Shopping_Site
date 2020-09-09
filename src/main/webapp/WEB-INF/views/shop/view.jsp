@@ -167,7 +167,7 @@
 				  <p class="gdsStock">
 				   <span>재고 </span><fmt:formatNumber pattern="###,###,###" value="${view.gdsStock}" /> EA
 				  </p>
-				  <c:if test = "${view.gdsStock !=0}">
+				  <c:if test = "${view.gdsStock !=0}"> 
 				  <p class="cartStock">
 					 <span>구입 수량</span>
 					 <button type="button" class="plus">+</button>
@@ -239,7 +239,7 @@
 					
 					<c:if test = "${view.gdsStock ==0}">
 						<p>상품 수량이 부족합니다.</p>
-					</c:if>
+					</c:if> 
 				 </div>
 				 
 				 <div class="gdsDes">${view.gdsDes}</div>
@@ -262,7 +262,6 @@
 				    <button type="button" id="reply_btn">소감 남기기</button>
 				    
 				    <script>
-				    function replyRegist(){
 					 $("#reply_btn").click(function(){
 					  
 					  var formObj = $(".replyForm form[role='form']");
@@ -284,7 +283,7 @@
 					   }
 					  });
 					 });
-				    }
+				    
 					</script>
 
 				   </div>

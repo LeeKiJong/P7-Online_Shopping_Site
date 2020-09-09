@@ -14,13 +14,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.shopping.domain.CartVO;
 import com.shopping.domain.CategoryVO;
 import com.shopping.domain.GoodsVO;
 import com.shopping.domain.GoodsViewVO;
 import com.shopping.domain.OrderListVO;
 import com.shopping.domain.OrderVO;
+import com.shopping.domain.ReplyListVO;
+import com.shopping.domain.ReplyVO;
 import com.shopping.service.AdminService;
 import com.shopping.utils.UploadFileUtils;
 
@@ -195,5 +199,24 @@ public class AdminController {
 	 return "redirect:/admin/shop/orderView?n=" + order.getOrderId();
 	}
 	
+	// 모든 소감(댓글)
+	@RequestMapping(value = "/shop/allReply", method = RequestMethod.GET)
+	public void getAllReply(Model model) throws Exception {
+	 Logger.info("get all reply");
+	   
+	 List<ReplyListVO> reply = adminService.allReply();
+	 
+	 model.addAttribute("reply", reply);
+	}
+	
+	// 모든 소감(댓글) 삭제
+	@RequestMapping(value = "/shop/allReply", method = RequestMethod.POST)
+	public String postAllReply(ReplyVO reply) throws Exception {
+		Logger.info("post all reply");
+				
+		adminService.deleteReply(reply.getRepNum());
+		
+		return "redirect:/admin/shop/allReply";
+	}	
 		
 }
