@@ -52,7 +52,6 @@
 		 footer#footer div#footer_box { padding:0 20px; }
 		 
 	</style>
-	<title>LKJ Online Shopping Mall</title>
 </head>
 <body>
 <div id = "root">

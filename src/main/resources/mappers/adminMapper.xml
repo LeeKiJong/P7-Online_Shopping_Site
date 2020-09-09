@@ -28,14 +28,6 @@
 	                 on g.cateCode = c.cateCode
 	</select>
 	
-	<!-- 상품 조회 
-	<select id="goodsView" resultType="com.shopping.domain.GoodsVO">
-	 select gdsNum, gdsName, cateCode, gdsPrice, gdsStock, gdsDes, gdsImg, gdsDate
-	     from tbl_goods
-	         where gdsNum = #{gdsNum}
-	</select>
-	-->
-	
 	<!-- 상품 조회 -->
 	<select id="goodsView" resultType="com.shopping.domain.GoodsViewVO">
 	 select

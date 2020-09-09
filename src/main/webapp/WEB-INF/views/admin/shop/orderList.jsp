@@ -28,14 +28,6 @@
 		 footer#footer ul li { display:inline-block; margin-right:10px; }
 	</style>
 	<style>
-		/*
-		#container_box table { width:900px; }
-		#container_box table th { font-size:20px; font-weight:bold;
-		       text-align:center; padding:10px; border-bottom:2px solid #666; }
-		#container_box table tr:hover { background:#eee; }
-		#container_box table td { padding:10px; text-align:center; }
-		#container_box table img { width:150px; height:auto; }
-		*/
 		 div#container_box ul li { border:5px solid #eee; padding:10px 20px; margin-bottom:20px; }
 		 div#container_box .orderList span { font-size:20px; font-weight:bold; display:inline-block; width:90px; margin-right:10px; }
 	</style>

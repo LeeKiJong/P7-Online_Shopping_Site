@@ -4,7 +4,6 @@
 	
 <html>
 <head>
-	<title>(Admin)LKJ Online Shopping Mall</title>
 	<style>
 		 body { font-family:'맑은 고딕', verdana; padding:0; margin:0; }
 		 ul { padding:0; margin:0; list-style:none;  }
@@ -192,17 +191,17 @@
 	
 </script>
 
-<script>
-var regExp = /[^0-9]/gi;
-
-$("#gdsPrice").keyup(function(){ numCheck($(this)); });
-$("#gdsStock").keyup(function(){ numCheck($(this)); });
-
-function numCheck(selector) {
- var tempVal = selector.val();
- selector.val(tempVal.replace(regExp, ""));
-}
-</script>
+	<script>
+	var regExp = /[^0-9]/gi;
+	
+	$("#gdsPrice").keyup(function(){ numCheck($(this)); });
+	$("#gdsStock").keyup(function(){ numCheck($(this)); });
+	
+	function numCheck(selector) {
+	 var tempVal = selector.val();
+	 selector.val(tempVal.replace(regExp, ""));
+	}
+	</script>
 
 </body>
 </html>

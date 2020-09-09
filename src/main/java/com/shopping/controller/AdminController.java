@@ -60,7 +60,7 @@ public class AdminController {
 	//상품 등록 POST
 	@RequestMapping(value = "/goods/register", method = RequestMethod.POST)
 	public String postGoodsRegister(GoodsVO vo, MultipartFile file) throws Exception {
-	 
+	 Logger.info("post goods register");
 	 String imgUploadPath = uploadPath + File.separator + "imgUpload";  // 이미지를 업로드할 폴더를 설정 = /uploadPath/imgUpload
 	 String ymdPath = UploadFileUtils.calcPath(imgUploadPath);  // 위의 폴더를 기준으로 연월일 폴더를 생성
 	 String fileName = null;  // 기본 경로와 별개로 작성되는 경로 + 파일이름
@@ -91,7 +91,7 @@ public class AdminController {
 	//상품 목록 GET
 	@RequestMapping(value = "/goods/list", method = RequestMethod.GET)
 	public void getGoodsList(Model model) throws Exception{
-		
+		Logger.info("get goods list");
 		List<GoodsViewVO> list = adminService.goodslist();
 		
 		model.addAttribute("list", list);
@@ -100,14 +100,16 @@ public class AdminController {
 	//상품 조회 GET
 	@RequestMapping(value = "/goods/view", method = RequestMethod.GET)
 	public void getGoodsview(@RequestParam("n") int gdsNum, Model model) throws Exception{
+		Logger.info("get goods view");
 		GoodsViewVO goods = adminService.goodsView(gdsNum);
 		model.addAttribute("goods", goods);
 		
 	}
 	
-	//상품 조회 GET
+	//상품 수정 GET
 	@RequestMapping(value = "/goods/modify", method = RequestMethod.GET)
 	public void getGoodsModify(@RequestParam("n") int gdsNum, Model model) throws Exception{
+		Logger.info("get goods modify");
 		GoodsViewVO goods = adminService.goodsView(gdsNum);
 		model.addAttribute("goods", goods);
 		
@@ -117,10 +119,10 @@ public class AdminController {
 			
 	}
 	
-	// 상품 수정
+	// 상품 수정 POST
 	@RequestMapping(value = "/goods/modify", method = RequestMethod.POST)
 	public String postGoodsModify(GoodsVO vo, MultipartFile file, HttpServletRequest req) throws Exception {
-
+		Logger.info("post goods modify");
 
 		 // 새로운 파일이 등록되었는지 확인
 		 if(file.getOriginalFilename() != null && file.getOriginalFilename() != "") {
@@ -151,7 +153,7 @@ public class AdminController {
 	// 상품 삭제
 	@RequestMapping(value = "/goods/delete", method = RequestMethod.POST)
 	public String postGoodsDelete(@RequestParam("n") int gdsNum) throws Exception {
-
+	 Logger.info("post goods delete");
 	 adminService.goodsDelete(gdsNum);
 		 
 	 return "redirect:/admin/index";

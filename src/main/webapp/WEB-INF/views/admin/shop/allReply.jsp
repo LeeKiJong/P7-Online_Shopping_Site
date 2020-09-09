@@ -28,14 +28,6 @@
 		 footer#footer ul li { display:inline-block; margin-right:10px; }
 	</style>
 	<style>
-	/*
-	#container_box table { width:900px; }
-	#container_box table th { font-size:20px; font-weight:bold;
-	       text-align:center; padding:10px; border-bottom:2px solid #666; }
-	#container_box table tr:hover { background:#eee; }
-	#container_box table td { padding:10px; text-align:center; }
-	#container_box table img { width:150px; height:auto; }
-	*/
 	
 	#container_box ul li { margin-bottom:20px; border:10px solid #eee; }
 	.replyInfo { background:#eee; padding:10px; font-size:18px; }

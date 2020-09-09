@@ -4,7 +4,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 <head>
-	<title>LKJ Shopping Mall</title>
 	<style>
 	
 		 body { margin:0; padding:0; font-family:'맑은 고딕', verdana; }
@@ -56,12 +55,6 @@
 	 
 	</style>	
 	<style>
-	/*
-	 section#content ul li { display:inline-block; margin:10px; }
-	 section#content div.goodsThumb img { width:200px; height:200px; }
-	 section#content div.goodsName { padding:10px 0; text-align:center; }
-	 section#content div.goodsName a { color:#000; }
-	*/
 	 .orderInfo { border:5px solid #eee; padding:10px 20px; margin:20px 0;}
 	 .orderInfo span { font-size:20px; font-weight:bold; display:inline-block; width:90px; }
 	 

@@ -6,7 +6,6 @@
 <html>
 <head>
 	
-	<title>LKJ Shopping Mall</title>
 	<style>
 	
 		 body { margin:0; padding:0; font-family:'맑은 고딕', verdana; }
@@ -294,18 +293,6 @@
 				 
 				 <section class="replyList">
 				 	<ol>
-				 	<%-- 
-					 <c:forEach items="${reply}" var="reply">
-					
-					  <li>
-					      <div class="userInfo">
-					       <span class="userName">${reply.userName}</span>
-					       <span class="date"><fmt:formatDate value="${reply.repDate}" pattern="yyyy-MM-dd" /></span>
-					      </div>
-					      <div class="replyContent">${reply.repCon}</div>
-					    </li>
-					   </c:forEach>
-					   --%>
 				  </ol>    
 				  <script>
 				  	replyList();
@@ -314,7 +301,7 @@
 				  <script>
 				  
 				  $(document).on("click", ".modify", function(){
-					  //$(".replyModal").attr("style", "display:block;");
+					
 					  $(".replyModal").fadeIn(200);
 					  
 					  var repNum = $(this).attr("data-repNum");
@@ -419,7 +406,7 @@ $(".modal_modify_btn").click(function(){
 	 
 	});
 $(".modal_cancel").click(function(){
- //$(".replyModal").attr("style", "display:none;");
+ 
 	$(".replyModal").fadeOut(200);
 });
 </script>

@@ -4,7 +4,6 @@
 	
 <html>
 <head>
-	<title>(Admin)LKJ Online Shopping Mall</title>
 	<style>
 		 body { font-family:'맑은 고딕', verdana; padding:0; margin:0; }
 		 ul { padding:0; margin:0; list-style:none;  }

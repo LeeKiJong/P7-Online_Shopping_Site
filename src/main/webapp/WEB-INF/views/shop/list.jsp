@@ -4,7 +4,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 <head>
-	<title>LKJ Shopping Mall</title>
 	<style>
 	
 		 body { margin:0; padding:0; font-family:'맑은 고딕', verdana; }

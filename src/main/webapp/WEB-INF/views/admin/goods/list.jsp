@@ -3,7 +3,6 @@
 	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 <head>
-	<title>(Admin)LKJ Online Shopping Mall</title>
 	<style>
 		 body { font-family:'맑은 고딕', verdana; padding:0; margin:0; }
 		 ul { padding:0; margin:0; list-style:none;  }
@@ -27,10 +26,6 @@
  
 		 footer#footer { background:#f9f9f9; padding:20px; }
 		 footer#footer ul li { display:inline-block; margin-right:10px; }
-	</style>
-	<style>
-		
-		
 	</style>
 </head>
 <body>
@@ -71,7 +66,6 @@
 						  <a href="/shopping/admin/goods/view?n=${list.gdsNum}">${list.gdsName}</a>
 						 </td>
 						 <td>
-						  <!-- ${list.cateCode} -->
 						  ${list.cateName}
 						 </td>
 						 <td>
