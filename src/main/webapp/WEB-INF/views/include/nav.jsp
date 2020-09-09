@@ -25,13 +25,14 @@
 		<li>
 			${member.userName}님 환영합니다.
 		</li>
-		
-		<li>
-			<a href = "/shopping/shop/cartList">장바구니</a>
-		</li>
-		<li>
-			<a href = "/shopping/shop/orderList">주문리스트</a>
-		</li>
+		<c:if test = "${member.verify == 0}">
+			<li>
+				<a href = "/shopping/shop/cartList">장바구니</a>
+			</li>
+			<li>
+				<a href = "/shopping/shop/orderList">주문리스트</a>
+			</li>
+		</c:if>
 		
 		
 		<li>

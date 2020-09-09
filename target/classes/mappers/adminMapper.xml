@@ -99,9 +99,15 @@
 	     set delivery = #{delivery}
 	 where orderId = #{orderId}
  
-</update>
+	</update>
 	
 
+	<!-- 상품 수량 조절 -->
+	<update id="changeStock">
+	 update tbl_goods
+	     set gdsStock = gdsStock - #{gdsStock}
+	 where gdsNum = #{gdsNum}
+	</update>
 
 </mapper>
 
