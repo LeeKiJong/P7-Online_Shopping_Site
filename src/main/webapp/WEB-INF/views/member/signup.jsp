@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <html>
 <head>
-	<title>LKJ Online Shopping Mall</title>
+	
 </head>
 <body>
 <div id = "root">
