@@ -47,27 +47,27 @@
 											required="required" />
 									</div>
 									<div class="6u$ 12u$(medium)">
-												<ul class="actions">
-													<li><button type="submit" id="signup_btn"
-															name="signup_btn" class="special">회원가입</button></li>
-													
-												</ul>
-											</div>
-									
+										<ul class="actions">
+											<li><button type="submit" id="signup_btn"
+													name="signup_btn" class="special">회원가입</button></li>
+
+										</ul>
+									</div>
+
 								</form>
 							</section>
 						</div>
-						</section>
+					</section>
 				</div>
 
 			</div>
 
 
 		</div>
-		
-		
-		
-		
-		</div>
+
+
+
+
+	</div>
 </body>
 </html>
