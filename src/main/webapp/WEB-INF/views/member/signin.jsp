@@ -40,7 +40,56 @@
 									</span>
 								</section>
 								<!-- Sidebar -->
-					<div id="sidebar">
+					
+							<div id = "root">
+								<header id = "header">
+									<div id = "header_box">
+										<%@ include file = "/WEB-INF/views/include/header.jsp" %>
+									</div>
+								</header>
+								<nav id = "nav">
+									<div id = "nav_box">
+										<%@ include file = "/WEB-INF/views/include/nav.jsp" %>
+									</div>
+								</nav>
+								<section id ="container">
+																
+								<div id = "container_box">
+									<section id="content">
+										<c:if test = "${member==null}">
+											<form role="form" method="post" autocomplete="off">
+														<div class="row uniform">
+															<div class="6u 12u$(xsmall)">
+																 <input type="email" id="userId" name="userId" required="required" placeholder="ID(Email)"/>
+															</div>
+															<div class="6u$ 12u$(xsmall)">
+																<input type="password" id="userPass" name="userPass" required="required" placeholder="Password"/>      
+															</div>
+															<div class="12u$">
+																<ul class="actions">
+																	<li><button type="submit" id="signin_btn" name="signin_btn" class = "special">로그인</button></li>
+																	<c:if test = "${member==null}">
+																		<li><a href="/shopping/member/signup" class="button special">회원가입</a></li>
+																	</c:if>
+																</ul>
+															</div>
+														</div>
+														<c:out value = "${msg}"/>
+													</form>
+										 </c:if>   
+									</section>
+								</div>
+								</section>
+								<footer id = "footer">
+									<div id = "footer-box">
+										<%@ include file = "/WEB-INF/views/include/footer.jsp" %>
+									</div>
+								</footer>
+						</div>
+					</div>
+
+			</div>
+<div id="sidebar">
 						<div class="inner">
 
 							<!-- Menu -->
@@ -91,55 +140,6 @@
 
 						</div>
 					</div>
-							<div id = "root">
-								<header id = "header">
-									<div id = "header_box">
-										<%@ include file = "/WEB-INF/views/include/header.jsp" %>
-									</div>
-								</header>
-								<nav id = "nav">
-									<div id = "nav_box">
-										<%@ include file = "/WEB-INF/views/include/nav.jsp" %>
-									</div>
-								</nav>
-								<section id ="container">
-																
-								<div id = "container_box">
-									<section id="content">
-										<c:if test = "${member==null}">
-											<form role="form" method="post" autocomplete="off">
-														<div class="row uniform">
-															<div class="6u 12u$(xsmall)">
-																 <input type="email" id="userId" name="userId" required="required" placeholder="ID(Email)"/>
-															</div>
-															<div class="6u$ 12u$(xsmall)">
-																<input type="password" id="userPass" name="userPass" required="required" placeholder="Password"/>      
-															</div>
-															<div class="12u$">
-																<ul class="actions">
-																	<li><button type="submit" id="signin_btn" name="signin_btn" class = "special">로그인</button></li>
-																	<c:if test = "${member==null}">
-																		<li><a href="/shopping/member/signup" class="button special">회원가입</a></li>
-																	</c:if>
-																</ul>
-															</div>
-														</div>
-														<c:out value = "${msg}"/>
-													</form>
-										 </c:if>   
-									</section>
-								</div>
-								</section>
-								<footer id = "footer">
-									<div id = "footer-box">
-										<%@ include file = "/WEB-INF/views/include/footer.jsp" %>
-									</div>
-								</footer>
-						</div>
-					</div>
-
-			</div>
-
 		<!-- Scripts -->
 			<script src="<spring:url value='/resources/assets/js/jquery.min.js'/>"></script>
 			<script src="<spring:url value='/resources/assets/js/skel.min.js'/>"></script>
