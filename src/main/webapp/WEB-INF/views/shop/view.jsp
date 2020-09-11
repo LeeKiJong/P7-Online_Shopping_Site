@@ -137,11 +137,6 @@
 			<%@ include file = "/WEB-INF/views/include/header.jsp" %>
 		</div>
 	</header>
-	<nav id = "nav">
-		<div id = "nav_box">
-			<%@ include file = "/WEB-INF/views/include/nav.jsp" %>
-		</div>
-	</nav>
 	<section id ="container">
 		<div id = "container_box">
 			<section id = "content">
@@ -343,16 +338,8 @@
 				</div>
 				
 			</section>
-			<aside>
-				<%@ include file = "/WEB-INF/views/include/aside.jsp" %>
-			</aside>
 		</div>
 	</section>
-	<footer id = "footer">
-		<div id = "footeer-box">
-			<%@ include file = "/WEB-INF/views/include/footer.jsp" %>
-		</div>
-	</footer>
 	
 </div>
 

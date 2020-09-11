@@ -8,13 +8,15 @@
 
 <script   src="http://code.jquery.com/jquery-3.3.1.js"   integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="   crossorigin="anonymous"></script>
 
+<!-- Scripts -->
+<script src="<spring:url value='/resources/assets/js/jquery.min.js'/>"></script>
+<script src="<spring:url value='/resources/assets/js/skel.min.js'/>"></script>
+<script src="<spring:url value='/resources/assets/js/util.js'/>"></script>
+<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+<script src="<spring:url value='/resources/assets/js/main.js'/>"></script>
 
-<!-- Bootstrap CSS -->
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="<spring:url value='/resources/assets/css/main.css'/>" />
+</head>
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-
-
-
-<h1 class = "title">
-	LKJ Shopping Mall
-</h1>
