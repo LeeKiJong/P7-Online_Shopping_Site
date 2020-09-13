@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <html>
 <head>
-	<script> 
+<script> 
 				  function replyList(){
 					 var gdsNum = ${view.gdsNum};
 					 $.getJSON("/shopping/shop/view/replyList" + "?n=" + gdsNum, function(data){
@@ -39,49 +38,68 @@
 </head>
 <body>
 
-<div id = "wrapper">
-<div id="main">
+	<div id="wrapper">
+		<div id="main">
 			<div class="inner">
-	<header id="header">
+				<header id="header">
 					<div id="header_box">
 						<%@ include file="/WEB-INF/views/include/aside.jsp"%>
 						<%@ include file="/WEB-INF/views/include/header.jsp"%>
 					</div>
 				</header>
-				
-	<section id ="container">
-		<div id = "container_box">
-			<section id = "content">
-				<form role="form" method="post">
-				 <input type="hidden" name="gdsNum" value="${view.gdsNum}" />
-				</form>
-				
-				<div class="goods">
-				 <div class="goodsImg">
-				  <img src="${view.gdsImg}">
-				 </div>
-				 
-				 <div class="goodsInfo">
-				  <p class="gdsName"><span>상품명</span>${view.gdsName}</p>
-				  
-				  <p class="cateName"><span>카테고리</span>${view.cateName}</p>
-				  
-				  <p class="gdsPrice">
-				   <span>가격 </span><fmt:formatNumber pattern="###,###,###" value="${view.gdsPrice}" /> 원
-				  </p>
-				  
-				  <p class="gdsStock">
-				   <span>재고 </span><fmt:formatNumber pattern="###,###,###" value="${view.gdsStock}" /> EA
-				  </p>
-				  <c:if test = "${view.gdsStock !=0}"> 
-				  <p class="cartStock">
-					 <span>구입 수량</span>
-					 <button type="button" class="plus">+</button>
-					 <input type="number" class="numBox" min="1" max="${view.gdsStock}" value="1" readonly="readonly"/>
-					 <button type="button" class="minus">-</button>
-					 
-					 <script>
-					  $(".plus").click(function(){
+
+				<section id="container">
+				<header id = "main">
+					<h1>${view.gdsName}</h1>
+				</header>
+					<div id="container_box">
+						<section id="content">
+							<form role="form" method="post">
+								<input type="hidden" name="gdsNum" value="${view.gdsNum}" />
+							</form>
+
+							<div class="goods">
+								<div class="goodsImg">
+									<img src="${view.gdsImg}">
+								</div>
+								
+								<div class="table-wrapper">
+														<table>
+															<tbody>
+																<tr>
+																	<td>상품명</td>
+																	<td>${view.gdsName}</td>
+																</tr>
+																<tr>
+																	<td>카테고리</td>
+																	<td>${view.cateName}</td>
+																</tr>
+																<tr>
+																	<td>가격</td>
+																	<td><fmt:formatNumber pattern="###,###,###" value="${view.gdsPrice}" />원</td>
+																</tr>
+																<tr>
+																	<td>재고</td>
+																	<td><fmt:formatNumber pattern="###,###,###" value="${view.gdsStock}" />EA</td>
+																</tr>
+															</tbody>
+														</table>
+													</div>
+													
+													
+								<div class="goodsInfo">
+									
+									<c:if test="${view.gdsStock !=0}">
+										<p class="cartStock">
+											<span>구입 수량</span>
+											<button type="button" id = "plus" class="button special small">+</button>
+											<button type="button" id = "minus" class="button small">-</button>
+											<input type="number" class="numBox" min="1"
+												max="${view.gdsStock}" value="1" readonly="readonly" />
+											
+
+											<script>
+					  $("#plus").click(function(){
 					   var num = $(".numBox").val();
 					   var plusNum = Number(num) + 1;
 					   
@@ -92,7 +110,7 @@
 					   }
 					  });
 					  
-					  $(".minus").click(function(){
+					  $("#minus").click(function(){
 					   var num = $(".numBox").val();
 					   var minusNum = Number(num) - 1;
 					   
@@ -103,13 +121,13 @@
 					   }
 					  });
 					 </script>
-					 
-					</p>
-				  
-				  <p class="addToCart">
-					 <button type="button" class="addCart_btn">카트에 담기</button>
-					 
-					 <script>
+
+										</p>
+
+										<p class="addToCart">
+											<button type="button" class="addCart_btn">카트에 담기</button>
+
+											<script>
 						 $(".addCart_btn").click(function(){
 						  var gdsNum = $("#gdsNum").val();
 						  var cartStock = $(".numBox").val();
@@ -140,34 +158,37 @@
 						 });
 					</script>
 
-					</p>
-					</c:if>
-					
-					<c:if test = "${view.gdsStock ==0}">
-						<p>상품 수량이 부족합니다.</p>
-					</c:if> 
-				 </div>
-				 
-				 <div class="gdsDes">${view.gdsDes}</div>
-				</div>
-				<div id="reply">
+										</p>
+									</c:if>
 
-				 <c:if test="${member == null }">
-				  <p>소감을 남기시려면 <a href="/shopping/member/signin">로그인</a>해주세요</p>
-				 </c:if>
-				 
-				 <c:if test="${member != null}">
-				 <section class="replyForm">
-				  <form role="form" method="post" autocomplete="off">
-				  <input type="hidden" name="gdsNum" id = "gdsNum" value="${view.gdsNum}">
-				   <div class="input_area">
-				    <textarea name="repCon" id="repCon"></textarea>
-				   </div>
-				   
-				   <div class="input_area">
-				    <button type="button" id="reply_btn">소감 남기기</button>
-				    
-				    <script>
+									<c:if test="${view.gdsStock ==0}">
+										<p>상품 수량이 부족합니다.</p>
+									</c:if>
+								</div>
+
+								<div class="gdsDes">${view.gdsDes}</div>
+							</div>
+							<div id="reply">
+
+								<c:if test="${member == null }">
+									<p>
+										소감을 남기시려면 <a href="/shopping/member/signin">로그인</a>해주세요
+									</p>
+								</c:if>
+
+								<c:if test="${member != null}">
+									<section class="replyForm">
+										<form role="form" method="post" autocomplete="off">
+											<input type="hidden" name="gdsNum" id="gdsNum"
+												value="${view.gdsNum}">
+											<div class="input_area">
+												<textarea name="repCon" id="repCon"></textarea>
+											</div>
+
+											<div class="input_area">
+												<button type="button" id="reply_btn">소감 남기기</button>
+
+												<script>
 					 $("#reply_btn").click(function(){
 					  
 					  var formObj = $(".replyForm form[role='form']");
@@ -192,20 +213,20 @@
 				    
 					</script>
 
-				   </div>
-				   
-				  </form>
-				 </section>
-				 </c:if>
-				 
-				 <section class="replyList">
-				 	<ol>
-				  </ol>    
-				  <script>
+											</div>
+
+										</form>
+									</section>
+								</c:if>
+
+								<section class="replyList">
+									<ol>
+									</ol>
+									<script>
 				  	replyList();
 				  </script>
-				  
-				  <script>
+
+									<script>
 				  
 				  $(document).on("click", ".modify", function(){
 					
@@ -246,36 +267,36 @@
 				  		}
 					 });
 				  </script>
+								</section>
+							</div>
+
+						</section>
+					</div>
 				</section>
-				</div>
-				
-			</section>
+			</div>
 		</div>
-	</section>
 	</div>
+
+	<div class="replyModal">
+
+		<div class="modalContent">
+
+			<div>
+				<textarea class="modal_repCon" name="modal_repCon"></textarea>
+			</div>
+
+			<div>
+				<button type="button" class="modal_modify_btn">수정</button>
+				<button type="button" class="modal_cancel">취소</button>
+			</div>
+
+		</div>
+
+		<div class="modalBackground"></div>
+
 	</div>
-</div>
 
-<div class="replyModal">
-
- <div class="modalContent">
-  
-  <div>
-   <textarea class="modal_repCon" name="modal_repCon"></textarea>
-  </div>
-  
-  <div>
-   <button type="button" class="modal_modify_btn">수정</button>
-   <button type="button" class="modal_cancel">취소</button>
-  </div>
-  
- </div>
-
- <div class="modalBackground"></div>
- 
-</div>
-
-<script>
+	<script>
 $(".modal_modify_btn").click(function(){
 	 var modifyConfirm = confirm("정말로 수정하시겠습니까?");
 	 
@@ -313,6 +334,6 @@ $(".modal_cancel").click(function(){
 
 </body>
 
- 
+
 </html>
 
