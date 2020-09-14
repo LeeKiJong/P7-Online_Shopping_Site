@@ -3,7 +3,7 @@
 
 <nav id="menu">
 		<header class="major">
-			<h2>Category</h2>
+			<h2>Menu</h2>
 		</header>
 		<ul>
 	<li><a href = "/shopping/admin/goods/register">상품 등록</a></li>
@@ -12,4 +12,5 @@
 	<li><a href = "/shopping/admin/shop/allReply">상품 후기</a></li>
 </ul>
 	</nav>
+	
 	

@@ -1,7 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/include/header.jsp"%>
+<c:if test = "${member.verify ==9}">
+<a href="/shopping/member/signin" class="logo"><strong>LKJ(Admin)</strong> Online Shopping Mall</a>
+</c:if>
+
+<c:if test = "${member.verify ==0}">
 <a href="/shopping/member/signin" class="logo"><strong>LKJ</strong> Online Shopping Mall</a>
+</c:if>
 	<ul class="icons">
 		<c:if test = "${member == null}">
 			<li><a href="/shopping/member/signin"><span class="label">로그인</span></a></li>
