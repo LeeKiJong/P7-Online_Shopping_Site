@@ -9,6 +9,11 @@
 		</c:if>
 		<c:if test = "${member != null}">
 			<li>${member.userName}님 환영합니다.</li>
+			<c:if test = "${member.verify == 0}">
+			<li><a href="/shopping/shop/cartList"><span class="label">장바구니</span></a></li>
+			<li><a href="/shopping/shop/orderList"><span class="label">주문목록</span></a></li>
+			</c:if>
 			<li><a href="/shopping/member/signout"><span class="label">로그아웃</span></a></li>
+			
 		</c:if>
 	</ul>
