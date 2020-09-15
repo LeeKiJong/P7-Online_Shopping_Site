@@ -53,6 +53,8 @@ textarea#gdsDes {
 	width: 400px;
 	height: 180px;
 }
+.oriImg {width:500px; height:auto;}
+.thumbImg{}
 </style>
 </head>
 <body>
@@ -76,7 +78,7 @@ textarea#gdsDes {
 
 							<input type="hidden" name="n" value="${goods.gdsNum}" />
 							<div class="inputArea">
-								<label>1차 분류</label> <span class="category1"></span> <label>2차
+								<label>1차 분류</label> <span class="category1">${goods.cateName}</span> <label>2차
 									분류</label> <span class="category2">${goods.cateCode}</span>
 							</div>
 
@@ -100,10 +102,10 @@ textarea#gdsDes {
 							<div class="inputArea">
 								<label for="gdsImg">이미지</label>
 								<p>원본 이미지</p>
-								<img src="${goods.gdsImg}" class="oriImg" />
+								<img src="<spring:url value = 'file:///C:/Users/rl876/Downloads/apache-tomcat-7.0.99/apache-tomcat-7.0.99/wtpwebapps/Shopping_Site${goods.gdsImg}'/>  class="oriImg" />
 
 								<p>썸네일</p>
-								<img src="${goods.gdsImg}" class="thumbImg" />
+								<img src="${goods.gdsThumbImg}" class="thumbImg" />
 							</div>
 
 							<div class="inputArea">
