@@ -15,12 +15,12 @@ public class UploadFileUtils {
  
  public static String fileUpload(String uploadPath,
          String fileName,
-         byte[] fileData, String ymdPath) throws Exception {
+         byte[] fileData) throws Exception {
 
   UUID uid = UUID.randomUUID();
   
   String newFileName = uid + "_" + fileName;
-  String imgPath = uploadPath + ymdPath;
+  String imgPath = uploadPath;
 
   File target = new File(imgPath, newFileName);
   FileCopyUtils.copy(fileData, target);

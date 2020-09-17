@@ -84,7 +84,6 @@
 			  });
 			 </script>
 			 
-			 <%=request.getRealPath("/") %>
 			</div>
 
 

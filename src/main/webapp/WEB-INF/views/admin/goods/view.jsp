@@ -102,12 +102,12 @@ textarea#gdsDes {
 							<div class="inputArea">
 								<label for="gdsImg">이미지</label>
 								<p>원본 이미지</p>
-								<img src="<spring:url value = 'file:///C:/Users/rl876/Downloads/apache-tomcat-7.0.99/apache-tomcat-7.0.99/wtpwebapps/Shopping_Site${goods.gdsImg}'/>  class="oriImg" />
+								<img src="<spring:url value='/resources${goods.gdsImg}'/>" class="oriImg" />
 
 								<p>썸네일</p>
 								<img src="${goods.gdsThumbImg}" class="thumbImg" />
 							</div>
-
+							
 							<div class="inputArea">
 								<button type="button" id="modify_Btn" class="btn btn-warning">수정</button>
 								<button type="button" id="delete_Btn" class="btn btn-danger">삭제</button>

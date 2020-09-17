@@ -6,6 +6,7 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -56,28 +57,42 @@ public class AdminController {
 	@RequestMapping(value = "/goods/register", method = RequestMethod.POST)
 	public String postGoodsRegister(GoodsVO vo, MultipartFile file) throws Exception {
 	 Logger.info("post goods register");
-	 String imgUploadPath = uploadPath + File.separator + "resources/imgUpload";  // 이미지를 업로드할 폴더를 설정 = /uploadPath/imgUpload
+	 /*String imgUploadPath = uploadPath + File.separator + "imgUpload";  // 이미지를 업로드할 폴더를 설정 = /uploadPath/imgUpload
 	 String ymdPath = UploadFileUtils.calcPath(imgUploadPath);  // 위의 폴더를 기준으로 연월일 폴더를 생성
 	 String fileName = null;  // 기본 경로와 별개로 작성되는 경로 + 파일이름
-	   
+	 
 	 if(file.getOriginalFilename() != null && file.getOriginalFilename() != "") {
 	  // 파일 인풋박스에 첨부된 파일이 없다면(=첨부된 파일이 이름이 없다면)
 	  
 	  fileName =  UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath);
 
 	  // gdsImg에 원본 파일 경로 + 파일명 저장
-	  vo.setGdsImg(File.separator + "resources/imgUpload" + ymdPath + File.separator + fileName);
+	  vo.setGdsImg(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
 	  // gdsThumbImg에 썸네일 파일 경로 + 썸네일 파일명 저장
-	  vo.setGdsThumbImg(File.separator + "resources/imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
+	  vo.setGdsThumbImg(File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
 	  
 	 } else {  // 첨부된 파일이 없으면
-	  fileName = File.separator + "resources/images" + File.separator + "none.png";
+	  fileName = File.separator + "images" + File.separator + "none.png";
 	  // 미리 준비된 none.png파일을 대신 출력함
 	  
 	  vo.setGdsImg(fileName);
 	  vo.setGdsThumbImg(fileName);
 	 }
-	      
+	      */
+	 
+	 String imgUploadPath = uploadPath + File.separator + "imgUpload";
+	 String fileName = null;
+
+	 if(file != null) {
+	  fileName =  UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes()); 
+	 } else {
+	  fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
+	 }
+
+	 vo.setGdsImg(File.separator + "imgUpload" + File.separator + fileName);
+	 vo.setGdsThumbImg(File.separator + "imgUpload" + File.separator + "s" + File.separator + "s_" + fileName);
+	 
+	 
 	 adminService.register(vo);
 	 
 	 return "redirect:/member/signin";
@@ -115,26 +130,11 @@ public class AdminController {
 	}
 	
 	// 상품 수정 POST
-	@RequestMapping(value = "/goods/modify", method = RequestMethod.POST)
+	/*@RequestMapping(value = "/goods/modify", method = RequestMethod.POST)
 	public String postGoodsModify(GoodsVO vo, MultipartFile file, HttpServletRequest req) throws Exception {
 		Logger.info("post goods modify");
 
-		
-		String imgUploadPath = uploadPath + File.separator + "imgUpload";
-		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
-		String fileName = null;
 
-		if(file != null) {
-		 fileName =  UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath); 
-		} else {
-		 fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
-		}
-
-		vo.setGdsImg(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
-		vo.setGdsThumbImg(File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
-		
-		
-		 /*
 		 if(file.getOriginalFilename() != null && file.getOriginalFilename() != "") {
 		  // 기존 파일을 삭제
 			  new File(uploadPath + req.getParameter("gdsImg")).delete();
@@ -154,11 +154,11 @@ public class AdminController {
 			  vo.setGdsThumbImg(req.getParameter("gdsThumbImg"));
 		  
 		 }
-		 */
+
 		 adminService.goodsModify(vo);
 		 
 		 return "redirect:/member/signin";
-	}
+	}*/
 	
 	// 상품 삭제
 	@RequestMapping(value = "/goods/delete", method = RequestMethod.POST)
