@@ -2,6 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <html>
+<head>
+<title>회원가입 페이지</title>
+</head>
 <body>
 	<!-- Wrapper -->
 	<div id="wrapper">

@@ -3,7 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 <head>
-	
+	<title>주문정보 조회 페이지</title>	
 	<style>
 	 .orderInfo { border:5px solid #eee; padding:10px 20px; margin:20px 0;}
 	 .orderInfo span { font-size:20px; font-weight:bold; display:inline-block; width:90px; }

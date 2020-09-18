@@ -14,6 +14,7 @@
 			<script src="<spring:url value='/resources/assets/js/util.js'/>"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="<spring:url value='/resources/assets/js/main.js'/>"></script>
+			<script src="<spring:url value='/resources/ckeditor/ckeditor.js'/>"></script>
 
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />

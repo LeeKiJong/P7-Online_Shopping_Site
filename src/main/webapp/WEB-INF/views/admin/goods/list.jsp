@@ -3,6 +3,16 @@
 	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 <head>
+<title>상품 목록 페이지</title>
+<style>
+	.table1{
+		text-align:center; vertical-align:middle
+	}
+	.th1{
+		text-align:center; vertical-align:middle
+	}
+</style>
+
 </head>
 <body>
 <!-- Wrapper -->
@@ -22,31 +32,33 @@
 			<table class="alt">
 				<thead>
 					<tr>
-						<th>번호</th>
-						<th>이름</th>
-						<th>카테고리</th>
-						<th>가격</th>
-						<th>수량</th>
-						<th>등록날짜</th>
+						<th class ="th1">이미지</th>
+						<th class ="th1">이름</th>
+						<th class ="th1">카테고리</th>
+						<th class ="th1">가격</th>
+						<th class ="th1">수량</th>
+						<th class ="th1">등록날짜</th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach items="${list}" var = "list">
 						<tr>
-						 <td>
-						  <img src="${list.gdsThumbImg}">
+						 <td class = "table1">
+						  <img src="<spring:url value='/resources${list.gdsThumbImg}'/>" />
 						 </td>
-						 <td>
+						 <td class = "table1">
 						  <a href="/shopping/admin/goods/view?n=${list.gdsNum}">${list.gdsName}</a>
 						 </td>
-						 <td>
+						 <td class = "table1">
 						  ${list.cateName}
 						 </td>
-						 <td>
+						 <td class = "table1">
 						  <fmt:formatNumber value="${list.gdsPrice}"  pattern="###,###,###"/>
 						 </td>
-						 <td>${list.gdsStock}</td>
-						 <td>
+						 <td class = "table1">
+						 ${list.gdsStock}
+						 </td>
+						 <td class = "table1">
 						  <fmt:formatDate value="${list.gdsDate}" pattern="yyyy-MM-dd" />
 						 </td>
 						</tr>    

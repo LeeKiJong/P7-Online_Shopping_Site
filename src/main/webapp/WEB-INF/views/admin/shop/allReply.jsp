@@ -3,6 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 <head>
+<title>댓글 조회 페이지</title>
 <style>
 section#container {
 	padding: 20px 0;

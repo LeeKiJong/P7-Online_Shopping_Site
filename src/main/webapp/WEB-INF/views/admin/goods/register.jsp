@@ -4,6 +4,7 @@
 	
 <html>
 <head>
+<title>상품 등록 페이지</title>
 	<style>
 		   section#container { padding:20px 0; border-top:2px solid #eee; border-bottom:2px solid #eee; }
 		 section#container::after { content:""; display:block; clear:both; }
@@ -17,6 +18,7 @@
 		textarea#gdsDes { width:400px; height:180px; }
 		.select_img img {margin:20px 0;}
 </style>
+
 </head>
 <body>
 	<!-- Wrapper -->
@@ -65,6 +67,19 @@
 			<div class="inputArea">
 			 	<label for="gdsDes">상품소개</label>
 			 	<textarea rows="5" cols="50" id="gdsDes" name="gdsDes"></textarea>
+			
+			
+			<script>
+			 var ckeditor_config = {
+			   resize_enaleb : false,
+			   enterMode : CKEDITOR.ENTER_BR,
+			   shiftEnterMode : CKEDITOR.ENTER_P,
+			   filebrowserUploadUrl : "/shopping/admin/goods/ckUpload"
+			 };
+			 
+			 CKEDITOR.replace("gdsDes", ckeditor_config);
+			</script>
+			
 			</div>
 			
 			<div class="inputArea">

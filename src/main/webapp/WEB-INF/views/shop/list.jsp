@@ -3,6 +3,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <html>
+<head>
+	<title>상품 목록 페이지</title>
+</head>
 <body>
 	<!-- Wrapper -->
 	<div id="wrapper">

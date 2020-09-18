@@ -5,7 +5,7 @@
 
 <html>
 <head>
-
+<title>상품 조회 페이지</title>
 
 <style>
 div.goods div.goodsImg {

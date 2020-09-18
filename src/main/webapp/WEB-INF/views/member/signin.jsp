@@ -2,6 +2,9 @@
 	pageEncoding="UTF-8"%>
 
 <html>
+<head>
+	<title>메인 페이지</title>
+</head>
 <body>
 	<!-- Wrapper -->
 	<div id="wrapper">

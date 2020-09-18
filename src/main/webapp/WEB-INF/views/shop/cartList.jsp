@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 <head>
-	
+	<title>장바구니 페이지</title>
 	<style>
 		 
 		 section#container { }

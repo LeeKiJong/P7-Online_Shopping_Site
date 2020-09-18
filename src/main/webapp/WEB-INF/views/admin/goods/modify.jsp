@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <html>
 <head>
+<title>상품 수정 페이지</title>
 <style>
 section#container {
 	padding: 20px 0;
@@ -96,15 +97,29 @@ textarea#gdsDes {
 							<div class="inputArea">
 								<label for="gdsDes">상품소개</label>
 								<textarea rows="5" cols="50" id="gdsDes" name="gdsDes">${goods.gdsDes}</textarea>
+								<script>
+							 var ckeditor_config = {
+							   resize_enaleb : false,
+							   enterMode : CKEDITOR.ENTER_BR,
+							   shiftEnterMode : CKEDITOR.ENTER_P,
+							   filebrowserUploadUrl : "/shopping/admin/goods/ckUpload"
+							 };
+							 
+							 CKEDITOR.replace("gdsDes", ckeditor_config);
+							</script>
+							
+							
+							
+							
 							</div>
 
 							<div class="inputArea">
 								<label for="gdsImg">이미지</label> <input type="file" id="gdsImg"
 									name="file" />
 								<div class="select_img">
-									<img src="${goods.gdsImg}" /> <input type="hidden"
-										name="gdsImg" value="${goods.gdsImg}" /> <input type="hidden"
-										name="gdsThumbImg" value="${goods.gdsThumbImg}" />
+									<img src="<spring:url value='/resources${goods.gdsImg}'/>" /> <input type="hidden"
+										name="gdsImg" value="<spring:url value='/resources${goods.gdsImg}'/>" /> <input type="hidden"
+										name="gdsThumbImg" value="<spring:url value='/resources${goods.gdsThumbImg}'/>" />
 								</div>
 
 								<script>
@@ -129,7 +144,6 @@ textarea#gdsDes {
 														}
 													});
 								</script>
-								<%=request.getRealPath("/")%>
 							</div>
 
 

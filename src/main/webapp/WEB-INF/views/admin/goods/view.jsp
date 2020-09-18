@@ -4,6 +4,7 @@
 
 <html>
 <head>
+<title>상품 조회 페이지</title>
 <style>
 nav#nav ul li {
 	display: inline-block;
@@ -55,6 +56,16 @@ textarea#gdsDes {
 }
 .oriImg {width:500px; height:auto;}
 .thumbImg{}
+
+.gdsDes img { max-width:600px; height:auto; }
+
+	.table1{
+		text-align:center; vertical-align:middle
+	}
+	.th1{
+		text-align:center; vertical-align:middle
+	}
+
 </style>
 </head>
 <body>
@@ -75,7 +86,7 @@ textarea#gdsDes {
 						<h2>상품 조회</h2>
 
 						<form role="form" method="post" autocomplete="off">
-
+							
 							<input type="hidden" name="n" value="${goods.gdsNum}" />
 							<div class="inputArea">
 								<label>1차 분류</label> <span class="category1">${goods.cateName}</span> <label>2차
@@ -96,7 +107,7 @@ textarea#gdsDes {
 							</div>
 
 							<div class="inputArea">
-								<label for="gdsDes">상품소개</label> <span>${goods.gdsDes}</span>
+								<label for="gdsDes">상품소개</label> <div class="gdsDes">${goods.gdsDes}</div>
 							</div>
 
 							<div class="inputArea">
@@ -105,7 +116,7 @@ textarea#gdsDes {
 								<img src="<spring:url value='/resources${goods.gdsImg}'/>" class="oriImg" />
 
 								<p>썸네일</p>
-								<img src="${goods.gdsThumbImg}" class="thumbImg" />
+								<img src="<spring:url value='/resources${goods.gdsThumbImg}'/>" class="thumbImg" />
 							</div>
 							
 							<div class="inputArea">
