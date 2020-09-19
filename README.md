@@ -17,16 +17,24 @@ Spring과 jsp를 사용한 쇼핑몰 베타버전입니다.
 ## 프로젝트 주요 기술 설명
 <h3>Controller</h3>  
 3개의 컨트롤러 파일(관리자, 유저 정보, 유저 쇼핑)로 나눠서 관리하도록 만들었다. 직접 테스트 해봤을 때 이렇게 나누는 게 안 헷갈리고 가장 효율적이였다.  
-![controller](https://user-images.githubusercontent.com/52438368/93668303-86c8da00-fac6-11ea-8b9c-ba21b82d714d.PNG)
+
+![controller](https://user-images.githubusercontent.com/52438368/93668303-86c8da00-fac6-11ea-8b9c-ba21b82d714d.PNG)  
+
 <h3>Mybatis</h3>  
 Mybatis를 사용하여 데이터베이스로의 불필요한 접근을 간소화 하였고 직관성있게 데이베베이스에 접근하도록 하였다.  
-![mybits](https://user-images.githubusercontent.com/52438368/93668309-8b8d8e00-fac6-11ea-97fb-67470fce2cd5.PNG) 
+
+![mybits](https://user-images.githubusercontent.com/52438368/93668309-8b8d8e00-fac6-11ea-97fb-67470fce2cd5.PNG)  
+
 <h3>Intreceptor</h3>  
 Interceptor를 통해서 기본 유저의 관리자 모드의 접속을 금지시켰다. admin이 들어가는 주소는 모두 기본 메뉴로 돌아도로록 하였다.  
-![Interceptor](https://user-images.githubusercontent.com/52438368/93668304-87fa0700-fac6-11ea-8dc4-bdd7898db3fe.PNG) 
+
+![Interceptor](https://user-images.githubusercontent.com/52438368/93668304-87fa0700-fac6-11ea-8dc4-bdd7898db3fe.PNG)  
+
 <h3>ckEditor</h3>  
 ckEditor를 통해서 상품의 설명을 작성할 때 보다 이쁘게 작성할 수 있도록 하였다.  
-![ckEditor](https://user-images.githubusercontent.com/52438368/93668308-8a5c6100-fac6-11ea-95ba-23d42e26fa69.PNG) 
+
+![ckEditor](https://user-images.githubusercontent.com/52438368/93668308-8a5c6100-fac6-11ea-95ba-23d42e26fa69.PNG)  
+
 <h3>기타 기술</h3>
 Spring, jsp, html, css, Ajax, JavaScript를 통한 유효성 검사, Oracle사의 SqlDevelop를 통한 DB 접근, mapper분리, 이미지 업로드 후 출력, include 파일 분리 작성..  
 
