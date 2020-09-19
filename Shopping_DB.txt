@@ -1,0 +1,144 @@
+alter table tbl_goods add
+    constraint fk_goods_category
+    foreign key (cateCode)
+        references goods_category(cateCode);	localhost	1600415102253	SQL	1	0.029
+alter table tbl_goods add (gdsThumbImg varchar(200));	localhost	1600417152943	SQL	1	0.004
+alter table tbl_order
+    add constraint tbl_order_userId foreign key(userId)
+    references tbl_member(userId);	localhost	1600419923041	SQL	1	0.004
+alter table tbl_order
+    add(
+        delivery    varchar2(20)    default '배송준비'
+    );	localhost	1600420017540	SQL	1	0.004
+alter table tbl_order
+    modify(userAddr1 varchar2(100));
+
+alter table tbl_order
+    modify(userAddr2 varchar2(100));
+   
+alter table tbl_order
+    modify(userAddr3 varchar2(100));	localhost	1600420076960	Script	1	0.056
+alter table tbl_order
+    modify(userAddr3 varchar2(100));	localhost	1600420074122	SQL	1	0.026
+alter table tbl_order_details
+    add constraint tbl_order_details_orderId foreign key(orderId)
+    references tbl_order(orderId);	localhost	1600419956275	SQL	1	0.004
+commit;	localhost	1600420899081	SQL	6	0.006
+create sequence tbl_goods_seq;	localhost	1600415143464	SQL	1	0.004
+create sequence tbl_order_details_seq;	localhost	1600419950014	SQL	1	0.006
+create table goods_category (
+    cateName     varchar2(20)    not null,
+    cateCode     varchar2(30)    not null,
+    cateCodeRef  varchar2(30)    null,
+    primary key(cateCode),
+    foreign key(cateCodeRef) references goods_category(cateCode)
+);	localhost	1600415095159	SQL	1	0.003
+create table tbl_cart (
+    cartNum     number          not null,
+    userId      varchar2(50)    not null,
+    gdsNum      number          not null,
+    cartStock   number          not null,
+    addDate     date            default sysdate,
+    primary key(cartNum, userId) 
+);
+
+create sequence tbl_cart_seq;
+
+alter table tbl_cart
+    add constraint tbl_cart_userId foreign key(userId)
+    references tbl_member(userId);
+
+alter table tbl_cart
+    add constraint tbl_cart_gdsNum foreign key(gdsNum)
+    references tbl_goods(gdsNum);	localhost	1600419865106	Script	1	0.053
+create table tbl_goods (
+    gdsNum       number          not null,
+    gdsName      varchar2(50)    not null,
+    cateCode     varchar2(30)    not null,
+    gdsPrice     number          not null,
+    gdsStock     number          null,
+    gdsDes       varchar(500)    null,
+    gdsImg       varchar(200)    null,
+    gdsDate      date            default sysdate,
+    primary key(gdsNum)  
+);	localhost	1600415087617	SQL	1	0.005
+create table tbl_member (
+    userId      varchar2(50)    not null,
+    userPass    varchar2(100)   not null,
+    userName    varchar2(30)    not null,
+    userPhon    varchar2(20)    not null,
+    userAddr1   varchar2(20)    null,
+    userAddr2   varchar2(50)    null,
+    userAddr3   varchar2(50)    null,
+    regiDate    date            default sysdate,
+    verify      number          default 0,
+    primary key(userId)
+);	localhost	1600415080236	SQL	1	0.15
+create table tbl_member (
+    userId      varchar2(50)    not null,
+    userPass    varchar2(100)   not null,
+    userName    varchar2(30)    not null,
+    userPhone    varchar2(20)    not null,
+    userAddr1   varchar2(20)    null,
+    userAddr2   varchar2(50)    null,
+    userAddr3   varchar2(50)    null,
+    regiDate    date            default sysdate,
+    verify      number          default 0,
+    primary key(userId)
+);	localhost	1600417621297	SQL	1	0.02
+create table tbl_order (
+    orderId     varchar2(50) not null,
+    userId      varchar2(50) not null,
+    orderRec    varchar2(50) not null,
+    userAddr1   varchar2(20) not null,
+    userAddr2   varchar2(50) not null,
+    userAddr3   varchar2(50) not null,
+    orderPhone   varchar2(30) not null,
+    amount      number       not null,
+    orderDate   Date         default sysdate,   
+    primary key(orderId)
+);	localhost	1600419914886	SQL	1	0.004
+create table tbl_order_details (
+    orderDetailsNum number       not null,
+    orderId         varchar2(50) not null,
+    gdsNum          number          not null,
+    cartStock       number          not null,
+    primary key(orderDetailsNum)
+);	localhost	1600419930939	SQL	1	0.034
+create table tbl_reply (
+    gdsNum      number          not null,
+    userId      varchar2(50)    not null,
+    repNum      number          not null,
+    repCon      varchar2(2000)  not null,
+    repDate     date            default sysdate,
+    primary key(gdsNum, repNum) 
+);
+create sequence tbl_reply_seq;
+alter table tbl_reply
+    add constraint tbl_reply_gdsNum foreign key(gdsNum)
+    references tbl_goods(gdsNum);
+   
+alter table tbl_reply
+    add constraint tbl_reply_userId foreign key(userId)
+    references tbl_member(userId);	localhost	1600419727315	Script	1	0.113
+drop sequence tbl_cart_seq;	localhost	1600419852726	SQL	1	0.005
+drop sequence tbl_goods_seq;	localhost	1600415137536	SQL	1	0.004
+drop sequence tbl_order_details_seq;	localhost	1600419943418	SQL	1	0.006
+drop sequence tbl_reply_seq;	localhost	1600419709283	SQL	1	0.004
+drop table tbl_member;	localhost	1600417616030	SQL	1	0.036
+insert into goods_category (cateName, cateCode) values ('상의', '100');
+insert into goods_category (cateName, cateCode, cateCodeRef) values ('티셔츠', '101', '100');
+insert into goods_category (cateName, cateCode, cateCodeRef) values ('셔츠', '102', '100');
+insert into goods_category (cateName, cateCode, cateCodeRef) values ('아우터', '103', '100');
+
+insert into goods_category (cateName, cateCode) values ('하의', '200');
+insert into goods_category (cateName, cateCode, cateCodeRef) values ('슬랙스', '201', '200');
+insert into goods_category (cateName, cateCode, cateCodeRef) values ('면바지', '202', '200');
+insert into goods_category (cateName, cateCode, cateCodeRef) values ('청바지', '203', '200');
+
+insert into goods_category (cateName, cateCode) values ('기타', '300');
+insert into goods_category (cateName, cateCode, cateCodeRef) values ('시계', '301', '300');
+insert into goods_category (cateName, cateCode, cateCodeRef) values ('목걸이', '302', '300');
+insert into goods_category (cateName, cateCode, cateCodeRef) values ('신발', '303', '300');	localhost	1600416935382	Script	1	0.078
+select * from tbl_goods;	localhost	1600422679175	SQL	2	0.002
+update tbl_member set verify=9 where username='이기종';	localhost	1600420869372	SQL	1	0.015
