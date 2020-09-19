@@ -11,7 +11,8 @@ Spring과 jsp를 사용한 쇼핑몰 베타버전입니다.
 * 세부 정보
 
 ## 프로젝트 설명
-이 프로젝트는 JAVA, JSP, Spring, Mybatis. html 위주로 만든 쇼핑몰 페이지입니다. 앞으로도 계속 기능을 추가하여 제작할 예정입니다.
+이 프로젝트는 JAVA, JSP, Spring, Mybatis. html 위주로 만든 쇼핑몰 페이지입니다. 앞으로도 계속 기능을 추가하여 제작할 예정입니다.  
+Spring, Mybatis, Interceptor, jsp, html, css, Ajax, JavaScript를 통한 유효성 검사, Oracle사의 SqlDevelop를 통한 DB 접근, mapper분리, 이미지 업로드 후 출력, include 파일 분리 작성..  
 
 
 ## 프로젝트 주요 기술 설명
@@ -34,10 +35,6 @@ Interceptor를 통해서 기본 유저의 관리자 모드의 접속을 금지�
 ckEditor를 통해서 상품의 설명을 작성할 때 보다 이쁘게 작성할 수 있도록 하였다.  
 
 ![ckEditor](https://user-images.githubusercontent.com/52438368/93668308-8a5c6100-fac6-11ea-95ba-23d42e26fa69.PNG)  
-
-<h3>기타 기술</h3>
-Spring, jsp, html, css, Ajax, JavaScript를 통한 유효성 검사, Oracle사의 SqlDevelop를 통한 DB 접근, mapper분리, 이미지 업로드 후 출력, include 파일 분리 작성..  
-
 
 ## 포함 목록
 다운로드 목록에는 다음과 같은 디렉토리와 파일이 있으며 공통 에셋을 논리적으로 그룹화하고 유사 및 축소 변형을 모두 제공합니다.  
