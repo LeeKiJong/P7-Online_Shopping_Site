@@ -70,12 +70,12 @@
 										</tr>
 								</tbody>
 							</table>
-
+							<hr />
 							<div class="inputArea">
 								<h3><label for="gdsDes">상품소개</label></h3>
 								<div class="gdsDes">${goods.gdsDes}</div>
 							</div>
-
+							<hr />
 							<div class="inputArea">
 								<h3><label for="gdsImg">이미지</label></h3>
 								<h4>원본 이미지</h4>
@@ -86,7 +86,7 @@
 								<img src="<spring:url value='/resources${goods.gdsThumbImg}'/>"
 									class="thumbImg" />
 							</div>
-
+							<hr />
 							<div class="inputArea">
 								<button type="button" id="modify_Btn" class="btn btn-warning">수정</button>
 								<button type="button" id="delete_Btn" class="btn btn-danger">삭제</button>

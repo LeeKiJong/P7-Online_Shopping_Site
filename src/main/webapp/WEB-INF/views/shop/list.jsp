@@ -26,12 +26,8 @@
 					<div class="posts">
 						<c:forEach items="${list}" var="list">
 							<article>
-								<a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
-								<!--  
-							<div class="goodsThumb">
-								<img src="${list.gdsThumbImg}">
-							</div>
-						-->
+								<a href="#" class="image"><img src="<spring:url value='/resources${list.gdsThumbImg}'/>" /></a>
+
 								<h3>${list.gdsName}</h3>
 								<p>${list.gdsDes}</p>
 								<ul class="actions">

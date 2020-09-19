@@ -221,6 +221,7 @@ div.modalContent button.modal_cancel {
 				</header>
 				<section id="container">
 					<div id="container_box">
+						<h2>상품 조회</h2>
 						<section id="content">
 							<form role="form" method="post">
 								<input type="hidden" name="gdsNum" value="${view.gdsNum}" />
@@ -228,7 +229,7 @@ div.modalContent button.modal_cancel {
 
 							<div class="goods">
 								<div class="goodsImg">
-									<img src="${view.gdsImg}">
+									<img src="<spring:url value='/resources${view.gdsImg}'/>"/>
 								</div>
 
 								<div class="goodsInfo">
@@ -291,37 +292,37 @@ div.modalContent button.modal_cancel {
 
 										<p class="addToCart">
 											<button type="button" class="addCart_btn">카트에 담기</button>
-
+											
 											<script>
-						 $(".addCart_btn").click(function(){
-						  var gdsNum = $("#gdsNum").val();
-						  var cartStock = $(".numBox").val();
-						           
-						  var data = {
-						    gdsNum : gdsNum,
-						    cartStock : cartStock
-						    };
-						  
-						  $.ajax({
-						   url : "/shopping/shop/view/addCart",
-						   type : "post",
-						   data : data,
-						   success : function(result){
-						    
-						    if(result == 1) {
-						     alert("카트 담기 성공");
-						     $(".numBox").val("1");
-						    } else {
-						     alert("회원만 사용할 수 있습니다.")
-						     $(".numBox").val("1");
-						    }
-						   },
-						   error : function(){
-						    alert("카트 담기 실패");
-						   }
-						  });
-						 });
-					</script>
+												 $(".addCart_btn").click(function(){
+												  var gdsNum = $("#gdsNum").val();
+												  var cartStock = $(".numBox").val();
+												           
+												  var data = {
+												    gdsNum : gdsNum,
+												    cartStock : cartStock
+												    };
+												  
+												  $.ajax({
+												   url : "/shopping/shop/view/addCart",
+												   type : "post",
+												   data : data,
+												   success : function(result){
+												    
+												    if(result == 1) {
+												     alert("카트 담기 성공");
+												     $(".numBox").val("1");
+												    } else {
+												     alert("회원만 사용할 수 있습니다.")
+												     $(".numBox").val("1");
+												    }
+												   },
+												   error : function(){
+												    alert("카트 담기 실패");
+												   }
+												  });
+												 });
+											</script>
 
 										</p>
 									</c:if>
@@ -329,10 +330,13 @@ div.modalContent button.modal_cancel {
 									<c:if test="${view.gdsStock ==0}">
 										<p>상품 수량이 부족합니다.</p>
 									</c:if>
+									<hr />
 								</div>
-
+								
 								<div class="gdsDes">${view.gdsDes}</div>
 							</div>
+							<hr />
+							<h3>댓글</h3>
 							<div id="reply">
 
 								<c:if test="${member == null }">

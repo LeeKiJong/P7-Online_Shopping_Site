@@ -49,6 +49,7 @@
 											id="userPhone" name="userPhone" placeholder="연락처를 입력해주세요"
 											required="required" />
 									</div>
+									<hr />
 									<div class="6u$ 12u$(medium)">
 										<ul class="actions">
 											<li><button type="submit" id="signup_btn"

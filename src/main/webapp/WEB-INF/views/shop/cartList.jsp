@@ -133,7 +133,7 @@
 				  </div>
 				 
 				  <div class="thumb">
-				   <img src="${cartList.gdsThumbImg}" />
+				   <img src="<spring:url value='/resources${cartList.gdsThumbImg}'/>" />
 				  </div>
 				  <div class="gdsInfo">
 				   <p>

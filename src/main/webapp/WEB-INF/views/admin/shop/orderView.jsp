@@ -90,7 +90,7 @@
 			 <c:forEach items="${orderView}" var="orderView">     
 			 <li>
 			  <div class="thumb">
-			   <img src="${orderView.gdsThumbImg}" />
+			   <img src="<spring:url value='/resources${orderView.gdsThumbImg}'/>" />
 			  </div>
 			  <div class="gdsInfo">
 			   <p>

@@ -81,7 +81,7 @@ div#container_box {
 										</p>
 										<p>
 											<span>작성된 상품</span> <a
-												href="/shopping/admin/shop/view?n=${reply.gdsNum}">바로가기</a>
+												href="/shopping/admin/goods/view?n=${reply.gdsNum}">바로가기</a>
 										</p>
 									</div>
 									<div class="replyContent">
