@@ -11,8 +11,9 @@ Spring과 jsp를 사용한 쇼핑몰 베타버전입니다.
 * 세부 정보
 
 ## 프로젝트 설명
-이 프로젝트는 JAVA, JSP, Spring, Mybatis. html 위주로 만든 쇼핑몰 페이지입니다. 앞으로도 계속 기능을 추가하여 제작할 예정입니다.  
-Spring, Mybatis, Interceptor, jsp, html, css, Ajax, JavaScript를 통한 유효성 검사, Oracle사의 SqlDevelop를 통한 DB 접근, mapper분리, 이미지 업로드 후 출력, include 파일 분리 작성..  
+이 프로젝트는 JAVA, JSP, Spring, Mybatis. html 위주로 만든 쇼핑몰 페이지입니다.  
+앞으로도 계속 기능을 추가하여 제작할 예정입니다.  
+Spring, Mybatis, Interceptor, jsp, html, css, Ajax, JavaScript를 통한 유효성 검사, Oracle사의 SqlDeveloper를 통한 DB 접근, mapper분리, 이미지 업로드 후 출력, include 파일 분리 작성..  
 
 
 ## 프로젝트 주요 기술 설명
